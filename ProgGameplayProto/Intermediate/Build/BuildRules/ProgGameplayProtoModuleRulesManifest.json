@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\FrostyFroggs\\Formations\\ProgGameplayProto\\Source\\ProgGameplayProto\\ProgGameplayProto.Build.cs",
+		"C:\\FrostyFroggs\\Formations\\ProgGameplayProto\\Source\\ProgGameplayProto.Target.cs",
+		"C:\\FrostyFroggs\\Formations\\ProgGameplayProto\\Source\\ProgGameplayProtoEditor.Target.cs"
+	],
+	"EngineVersion": "5.3.1"
+}

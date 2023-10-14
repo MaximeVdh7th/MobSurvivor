@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\proggameplayproto\\intermediate\\build\\win64\\unrealeditor\\inc\\proggameplayproto\\uht\\proggameplayprotogamemode.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\projects\\proggameplayproto\\intermediate\\build\\win64\\x64\\proggameplayprotoeditor\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\projects\\proggameplayproto\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\proggameplayproto\\definitions.proggameplayproto.h",
+            "d:\\projects\\proggameplayproto\\source\\proggameplayproto\\proggameplayprotogamemode.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "d:\\projects\\proggameplayproto\\intermediate\\build\\win64\\unrealeditor\\inc\\proggameplayproto\\uht\\proggameplayprotogamemode.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

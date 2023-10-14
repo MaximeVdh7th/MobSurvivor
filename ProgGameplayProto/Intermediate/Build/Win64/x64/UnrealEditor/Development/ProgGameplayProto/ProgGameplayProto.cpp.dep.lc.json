@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\projects\\proggameplayproto\\source\\proggameplayproto\\proggameplayproto.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\projects\\proggameplayproto\\intermediate\\build\\win64\\x64\\proggameplayprotoeditor\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\projects\\proggameplayproto\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\proggameplayproto\\definitions.proggameplayproto.h",
+            "d:\\projects\\proggameplayproto\\source\\proggameplayproto\\proggameplayproto.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

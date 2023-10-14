@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "ProgGameplayProto",
+			"Path": "..\\Source\\ProgGameplayProto.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "ProgGameplayProtoEditor",
+			"Path": "..\\Source\\ProgGameplayProtoEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
