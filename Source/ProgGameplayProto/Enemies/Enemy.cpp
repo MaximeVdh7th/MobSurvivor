@@ -40,11 +40,85 @@ void AEnemy::MoveTowardPlayer(float DeltaTime)
 
 	FVector direction = player->GetActorLocation() - GetActorLocation();
 	direction.Z = 0;
+
+
+
+	//If does Distance Attack
+	float SquareLength = direction.SquaredLength();
 	direction.Normalize();
+
+
+	if (SquareLength < MeleeRange * MeleeRange) 
+	{   
+		
+		//Rotate the enemy towards the player
+		float Tangent = atan2(direction.Y, direction.X) / PI * 180;//Tangent
+		FRotator Rot = FRotator(0, Tangent, 0);
+		SetActorRotation(Rot);
+
+		MeleeAttack = true;
+
+		Attack_BP(UGameUtils::GetMainCharacter());
+		//FTimerDelegate TimerDel;
+		//TimerDel.BindUFunction(this, FName("TryAttacking"), UGameUtils::GetMainCharacter());
+		//GetWorldTimerManager().SetTimer(UnusedHandle, TimerDel, TimeToAttack, false);
+		//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::TryAttacking, TimeToAttack, false);
+		return;
+	}
+	if (CanDoDistanceAttack)
+	{
+		//ATTACK if close enough and looking in the correct direction (with a tolerance threshold)
+		float DotAngle = (1 - FVector::DotProduct(GetActorRotation().Vector(), direction) ) * 180; //InDegree
+		float AttackTolerance = DistDegreeAngle * 0.5;
+		float Yaw = GetActorRotation().Yaw;
+		bool IsInAngle = DotAngle < Yaw + AttackTolerance && DotAngle > Yaw - AttackTolerance;
+		
+		
+		if ((SquareLength < DistRange * DistRange) && IsInAngle) // && IsInAngle
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Distance!"));
+
+			//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::LoadAttack, TimeToAttack, false);
+
+			//FTimerDelegate TimerDel;
+			//TimerDel.BindUFunction(this, FName("Projectile_BP"), direction);
+			//GetWorldTimerManager().SetTimer(UnusedHandle, TimerDel, TimeToAttack, false);
+
+			Projectile_BP(direction);
+
+			DistAttack = true;
+			return;
+		}
+	}
+	
+
+#pragma region Mov and Rotation
 
 	FVector movement = direction * MoveSpeed * DeltaTime;
 
 	AddActorWorldOffset(movement);
+
+	//Custom Rotation towards the player
+	float Tangent = atan2(direction.Y, direction.X) / PI * 180;//Tangent = Opposite / adjascent == Y / X => Rad to Degree
+	
+	//copysignf(x,y) x = magnitude && y = sign 
+
+	FRotator Rot = FRotator(0, Tangent,0);	
+	FQuat QuatRotation = FQuat(Rot);
+	
+	//SetActorRotation(Rot);
+	//SetActorRotation(FMath::QInterpConstantTo(GetActorRotation().Quaternion(), QuatRotation, DeltaTime, RotationRate));
+	SetActorRotation(FMath::QInterpTo(GetActorRotation().Quaternion(), QuatRotation, DeltaTime, RotationRate));
+#pragma endregion
+}
+
+void AEnemy::TakeDamage(AWeaponProjectile* HitActor)
+{
+	Health->HitByProjectile(HitActor);
+	if (Health->GetCurrentHealth() <= 0) 
+	{
+		Die();
+	}
 }
 
 void AEnemy::Die()
@@ -56,7 +130,7 @@ void AEnemy::Die()
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	if (MeleeAttack || DistAttack) { return; }
 	MoveTowardPlayer(DeltaTime);
 }
 
@@ -64,7 +138,6 @@ void AEnemy::Tick(float DeltaTime)
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
 void AEnemy::TryAttacking(AActor* Target)
@@ -77,5 +150,23 @@ void AEnemy::TryAttacking(AActor* Target)
 
 	targetHealth->HitByAttack(Damages, this);
 
-	Attack_BP(Target);
+	//Attack_BP(Target);
+
+	
+	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::ReleaseMelee, ReleaseMeleeTime, false);
+}
+
+void AEnemy::ReleaseMelee()
+{	
+	MeleeAttack = false;
+}
+void AEnemy::ReleaseDistance()
+{
+	DistAttack = false;
+	//can melee if player is sitting next to enemies
+	if (MeleeAttack) 
+	{
+		TryAttacking(UGameUtils::GetMainCharacter());
+	}
+	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Reset!"));
 }
