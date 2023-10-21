@@ -51,7 +51,15 @@ public:
 	UPROPERTY(Category = EnemyParameters, BlueprintReadOnly)
 	bool DistAttack; //Is doing a distance attack
 
+	UPROPERTY(Category = EnemyParameters, EditAnywhere, BlueprintReadOnly)
+	float ReloadTime;
 
+	UPROPERTY(Category = EnemyParameters, EditAnywhere, BlueprintReadOnly)
+	float FireRate;
+
+
+	UPROPERTY(Category = EnemyParameters, EditAnywhere, BlueprintReadOnly)
+	int MagSize;
 
 
 

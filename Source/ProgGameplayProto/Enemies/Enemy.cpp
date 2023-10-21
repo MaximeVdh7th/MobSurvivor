@@ -48,9 +48,11 @@ void AEnemy::MoveTowardPlayer(float DeltaTime)
 	direction.Normalize();
 
 
+	
+
+
 	if (SquareLength < MeleeRange * MeleeRange) 
-	{   
-		
+	{  
 		//Rotate the enemy towards the player
 		float Tangent = atan2(direction.Y, direction.X) / PI * 180;//Tangent
 		FRotator Rot = FRotator(0, Tangent, 0);
@@ -70,8 +72,7 @@ void AEnemy::MoveTowardPlayer(float DeltaTime)
 		//ATTACK if close enough and looking in the correct direction (with a tolerance threshold)
 		float DotAngle = (1 - FVector::DotProduct(GetActorRotation().Vector(), direction) ) * 180; //InDegree
 		float AttackTolerance = DistDegreeAngle * 0.5;
-		float Yaw = GetActorRotation().Yaw;
-		bool IsInAngle = DotAngle < Yaw + AttackTolerance && DotAngle > Yaw - AttackTolerance;
+		bool IsInAngle = DotAngle < AttackTolerance && DotAngle > - AttackTolerance;
 		
 		
 		if ((SquareLength < DistRange * DistRange) && IsInAngle) // && IsInAngle
