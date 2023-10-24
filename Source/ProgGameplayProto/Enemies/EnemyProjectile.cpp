@@ -4,14 +4,15 @@
 #include "EnemyProjectile.h"
 
 #include "ProgGameplayProto/Health.h"
+#include "ProgGameplayProto/Weapons/WeaponProjectile.h"
+//#include "ProgGameplayProto/ProjectileInteraction.h"
+
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/StaticMeshComponent.h"
-#include "ProgGameplayProto/ProgGameplayProtoCharacter.h"
 
 // Sets default values
 AEnemyProjectile::AEnemyProjectile()
 {
-
 	PrimaryActorTick.bCanEverTick = true;
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
@@ -67,8 +68,7 @@ void AEnemyProjectile::CheckForCollisionsAfterMovement(FVector OriginLocation)
 
 	if (hit) 
 	{
-		HitSomething(OutHit.GetActor());
-		DestroyProjectile();
+		HitSomething(OutHit.GetActor());		
 	}
 }
 
@@ -79,14 +79,29 @@ void AEnemyProjectile::HitSomething(AActor* OtherActor)
 	if (projectileInteraction != nullptr) 
 	{
 		UHealth* targetHealth = OtherActor->FindComponentByClass<UHealth>();
-		if (!IsValid(targetHealth) || targetHealth == nullptr)
+		//if (!IsValid(targetHealth) || targetHealth == nullptr)
+		if (IsValid(targetHealth) && targetHealth != nullptr)
 		{
+			targetHealth->HitByAttack(Damage, this);
 			DestroyProjectile();
 			return;
 		} 
-		targetHealth->HitByAttack(Damage, this);
 	}
 
+	AWeaponProjectile* Projectile = Cast<AWeaponProjectile>(OtherActor);
+	if (IsValid(Projectile) && Projectile != nullptr)
+	{
+		if (Projectile->CanDestroyBullets)
+		{
+			Projectile->HitSomething(GetOwner(), GetActorLocation(), OtherActor->GetActorLocation());
+			DestroyProjectile();
+			return;
+		}
+		return;
+	}
+
+
+	DestroyProjectile();
 	//if (OtherActor->IsA(AProgGameplayProtoCharacter::StaticClass())) 
 	//{
 	//	UHealth* targetHealth = OtherActor->FindComponentByClass<UHealth>();

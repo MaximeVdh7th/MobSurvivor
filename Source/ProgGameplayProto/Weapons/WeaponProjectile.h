@@ -42,6 +42,7 @@ protected:
 	float CriticalHitMultiplier;
 
 	bool bCanPierce;
+	
 
 	float ElapsedRange;
 
@@ -50,6 +51,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	bool CanDestroyBullets;
+
 	UPROPERTY(BlueprintAssignable)
 	FProjectileHitDelegate OnProjectileHit;
 
