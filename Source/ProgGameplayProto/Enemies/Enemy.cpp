@@ -3,6 +3,7 @@
 
 #include "Enemy.h"
 
+#include "EnemiesHealthBar.h"
 #include "Components/CapsuleComponent.h"
 #include "ProgGameplayProto/GameUtils.h"
 #include "ProgGameplayProto/Health.h"
@@ -34,6 +35,9 @@ void AEnemy::BeginPlay()
 	Super::BeginPlay();
 
 	Health->OnHealthDie.AddDynamic(this, &AEnemy::Die);
+
+	UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
+	EnemiesHealthBar->SetOwnerEnemy(this);
 }
 
 void AEnemy::MoveTowardPlayer(float DeltaTime)

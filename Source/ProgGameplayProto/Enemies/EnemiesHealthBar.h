@@ -12,6 +12,9 @@ UCLASS(Abstract)
 class PROGGAMEPLAYPROTO_API UEnemiesHealthBar : public UUserWidget
 {
 	GENERATED_BODY()
+public:
+
+	void SetOwnerEnemy(AEnemy* InEnemy) { OwnerEnemy = InEnemy; }
 
 protected:
 
@@ -23,5 +26,7 @@ protected:
 	class UTextBlock* CurrentHealthLabel;
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* MaxHealthLabel;
+
+	void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
 };

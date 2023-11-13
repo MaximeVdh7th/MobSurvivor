@@ -47,4 +47,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	virtual float GetCurrentHealthPercentage();
+
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE float GetMaxHealth() { return MaxHealth; }
 };
