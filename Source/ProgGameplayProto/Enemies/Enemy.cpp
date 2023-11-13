@@ -22,6 +22,10 @@ AEnemy::AEnemy()
 
 	Dropper = CreateDefaultSubobject<UEnemyDropperComponent>("Dropper");
 	Dropper->SetupAttachment(Collision);
+
+	//barre de vie
+	HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT( "HealthBar" ));
+	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
 // Called when the game starts or when spawned

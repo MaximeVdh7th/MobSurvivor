@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Components/WidgetComponent.h"
 #include "Enemy.generated.h"
 
 class UEnemyDropperComponent;
@@ -34,7 +35,7 @@ public:
 	UPROPERTY(Category = EnemyParameters, EditAnywhere, BlueprintReadWrite)
 	float RotationRate;
 
-
+	
 
 
 	//Distance attack
@@ -98,6 +99,10 @@ private:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UPROPERTY(VisibleAnywhere)
+	class UWidgetComponent* HealthWidgetComp;
+
 
 	virtual void MoveTowardPlayer(float DeltaTime);
 
