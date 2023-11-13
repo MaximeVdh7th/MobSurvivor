@@ -30,6 +30,11 @@ void UHealth::AddHealth(float Amount)
 {
 	CurrentHealth += Amount;
 
+	if (CurrentHealth > MaxHealth) 
+	{
+		CurrentHealth = MaxHealth;
+	}
+
 	OnHealthChanged.Broadcast(CurrentHealth);
 
 	if (CurrentHealth <= 0)

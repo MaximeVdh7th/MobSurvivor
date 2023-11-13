@@ -21,12 +21,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MaxHealth = 10;
 
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite)
-	float CurrentHealth;
 
 	virtual void BeginPlay() override;
 
 public:
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite)
+	float CurrentHealth;
 	UPROPERTY()
 	FOnHealthDie OnBeforeHealthDie;
 

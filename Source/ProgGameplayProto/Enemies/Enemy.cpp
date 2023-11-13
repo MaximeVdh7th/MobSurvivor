@@ -50,55 +50,12 @@ void AEnemy::MoveTowardPlayer(float DeltaTime)
 	direction.Z = 0;
 
 
-
-	//If does Distance Attack
 	float SquareLength = direction.SquaredLength();
 	direction.Normalize();
-
-
-	
-
-
-	if (SquareLength < MeleeRange * MeleeRange) 
-	{  
-		//Rotate the enemy towards the player
-		float Tangent = atan2(direction.Y, direction.X) / PI * 180;//Tangent
-		FRotator Rot = FRotator(0, Tangent, 0);
-		SetActorRotation(Rot);
-
-		MeleeAttack = true;
-
-		Attack_BP(UGameUtils::GetMainCharacter());
-		//FTimerDelegate TimerDel;
-		//TimerDel.BindUFunction(this, FName("TryAttacking"), UGameUtils::GetMainCharacter());
-		//GetWorldTimerManager().SetTimer(UnusedHandle, TimerDel, TimeToAttack, false);
-		//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::TryAttacking, TimeToAttack, false);
-		return;
-	}
-	if (CanDoDistanceAttack)
+	if (TryAttacking(direction, SquareLength)) 
 	{
-		//ATTACK if close enough and looking in the correct direction (with a tolerance threshold)
-		float DotAngle = (1 - FVector::DotProduct(GetActorRotation().Vector(), direction) ) * 180; //InDegree
-		float AttackTolerance = DistDegreeAngle * 0.5;
-		bool IsInAngle = DotAngle < AttackTolerance && DotAngle > - AttackTolerance;
-		
-		
-		if ((SquareLength < DistRange * DistRange) && IsInAngle) // && IsInAngle
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Distance!"));
-
-			//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::LoadAttack, TimeToAttack, false);
-
-			//FTimerDelegate TimerDel;
-			//TimerDel.BindUFunction(this, FName("Projectile_BP"), direction);
-			//GetWorldTimerManager().SetTimer(UnusedHandle, TimerDel, TimeToAttack, false);
-
-			Projectile_BP(direction);
-
-			DistAttack = true;
-			return;
-		}
-	}
+		return;
+	}	
 	
 
 #pragma region Mov and Rotation
@@ -121,6 +78,51 @@ void AEnemy::MoveTowardPlayer(float DeltaTime)
 #pragma endregion
 }
 
+bool AEnemy::TryAttacking(const FVector& direction, float SquareLength)
+{
+
+	if (CanMeleeAttack && SquareLength < MeleeRange * MeleeRange)
+	{
+		//Rotate the enemy towards the player
+		float Tangent = atan2(direction.Y, direction.X) / PI * 180;//Tangent
+		FRotator Rot = FRotator(0, Tangent, 0);
+		SetActorRotation(Rot);
+
+		MeleeAttack = true;
+
+		Attack_BP(UGameUtils::GetMainCharacter());
+
+		return true;
+	}
+
+	//If it does Distance Attack
+	if (CanDoDistanceAttack)
+	{
+		//ATTACK if close enough and looking in the correct direction (with a tolerance threshold aka angle)
+		float DotAngle = (1 - FVector::DotProduct(GetActorRotation().Vector(), direction)) * 180; //InDegree
+		float AttackTolerance = DistDegreeAngle * 0.5;
+		bool IsInAngle = DotAngle < AttackTolerance && DotAngle > -AttackTolerance;
+
+
+		if ((SquareLength < DistRange * DistRange) && IsInAngle) // && IsInAngle
+		{
+			//GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Distance!"));
+
+			//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::LoadAttack, TimeToAttack, false);
+
+			//FTimerDelegate TimerDel;
+			//TimerDel.BindUFunction(this, FName("Projectile_BP"), direction);
+			//GetWorldTimerManager().SetTimer(UnusedHandle, TimerDel, TimeToAttack, false);
+
+			Projectile_BP(direction);
+
+			DistAttack = true;
+			return true;
+		}
+	}
+	return false;
+}
+
 void AEnemy::TakeDamage(AWeaponProjectile* HitActor)
 {
 	Health->HitByProjectile(HitActor);
@@ -140,8 +142,84 @@ void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	if (MeleeAttack || DistAttack) { return; }
-	MoveTowardPlayer(DeltaTime);
+
+
+
+	HealCounter += DeltaTime;
+	ProtectCounter += DeltaTime;	
+	SupportFunction();
+	if (!IsHealing) 
+	{ 
+		MoveTowardPlayer(DeltaTime);
+	}	
 }
+
+void AEnemy::SupportFunction()
+{	
+	if (IsHealing && HealCounter >= HealDuration)
+	{
+		IsHealing = false;
+		HealCounter = 0;
+		if(ProtectedBean!=nullptr && IsValid(ProtectedBean)) //ensure(ObjectPointer)
+		HealVFX(ProtectedBean->GetActorLocation());
+	}
+	if (ProtectCounter >= ProtectDuration)
+	{
+		IsProtecting = false;
+		ProtectCounter = 0;
+		StopProtecting();
+	}
+	if (CanHeal && !IsHealing)
+	{
+		if (HealCounter >= HealDelay + HealDuration)
+		{
+			TryToFindAllies(); //ProtectedBean = nullptr;
+			if (ProtectedBean == nullptr || !IsValid(ProtectedBean) )
+			{
+				HealCounter -= TryToFindAlliesTime;
+			}
+			else
+			{
+				IsHealing = true;
+				HealCounter = 0;
+
+				Healing(ProtectedBean);
+				StartHealing();
+				return;
+			}
+		}
+	}
+	if (CanProtect && !IsProtecting)
+	{
+		if (ProtectCounter >= ProtectDelay + ProtectDuration)
+		{
+			TryToFindAllies();
+			if (ProtectedBean == nullptr || !IsValid(ProtectedBean))
+			{
+				HealCounter -= TryToFindAlliesTime;
+			}
+			else
+			{
+				IsProtecting = true;
+				ProtectCounter = 0;
+				StartProtecting(ProtectedBean->GetActorLocation());				
+			}
+		}
+	}
+}
+
+void AEnemy::Healing(AEnemy* Target)
+{
+	if (Target != nullptr) 
+	{
+		Target->FindComponentByClass<UHealth>()->AddHealth(HealthRestored);
+		FString TheFloatStr = FString::SanitizeFloat(Target->FindComponentByClass<UHealth>()->CurrentHealth);
+		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, *TheFloatStr);
+	}
+}
+//void AEnemy::TryToFindAllies()
+//{		
+//}
 
 // Called to bind functionality to input
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -149,7 +227,7 @@ void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void AEnemy::TryAttacking(AActor* Target)
+void AEnemy::DoDamage(AActor* Target)
 {
 	if (!Target->IsA(AProgGameplayProtoCharacter::StaticClass())) return;
 
@@ -175,7 +253,7 @@ void AEnemy::ReleaseDistance()
 	//can melee if player is sitting next to enemies
 	if (MeleeAttack) 
 	{
-		TryAttacking(UGameUtils::GetMainCharacter());
+		DoDamage(UGameUtils::GetMainCharacter());
 	}
 	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Reset!"));
 }
