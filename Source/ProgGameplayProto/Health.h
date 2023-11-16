@@ -25,6 +25,10 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool HasShield;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float ShieldHealth;
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite)
 	float CurrentHealth;
 	UPROPERTY()
@@ -40,7 +44,7 @@ public:
 	virtual void HitByProjectile(AWeaponProjectile* Projectile) override;
 	virtual void HitByAttack(float Damages, AActor* Attacker);
 	virtual void AddHealth(float Amount);
-	virtual void Die();
+	virtual void Die();	
 
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE float GetCurrentHealth() { return CurrentHealth; }
@@ -50,4 +54,6 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE float GetMaxHealth() { return MaxHealth; }
+
+	float GetDamage(AWeaponProjectile* DamageProjectile);
 };

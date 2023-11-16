@@ -125,6 +125,15 @@ bool AEnemy::TryAttacking(const FVector& direction, float SquareLength)
 
 void AEnemy::TakeDamage(AWeaponProjectile* HitActor)
 {
+	if (Health->HasShield)
+	{		
+		if (Health->ShieldHealth <= 0)
+		{
+			StopProtection();
+		}
+		return;
+	}
+
 	Health->HitByProjectile(HitActor);
 	if (Health->GetCurrentHealth() <= 0) 
 	{
@@ -134,6 +143,10 @@ void AEnemy::TakeDamage(AWeaponProjectile* HitActor)
 
 void AEnemy::Die()
 {
+	if (IsProtecting && ProtectedBean != nullptr && IsValid(ProtectedBean))
+	{
+		ProtectedBean->StopProtection();
+	}
 	Destroy();
 }
 
@@ -148,7 +161,7 @@ void AEnemy::Tick(float DeltaTime)
 	HealCounter += DeltaTime;
 	ProtectCounter += DeltaTime;	
 	SupportFunction();
-	if (!IsHealing) 
+	if (!IsHealing && !IsProtecting)
 	{ 
 		MoveTowardPlayer(DeltaTime);
 	}	
@@ -163,11 +176,11 @@ void AEnemy::SupportFunction()
 		if(ProtectedBean!=nullptr && IsValid(ProtectedBean)) //ensure(ObjectPointer)
 		HealVFX(ProtectedBean->GetActorLocation());
 	}
-	if (ProtectCounter >= ProtectDuration)
+	if (IsProtecting && ProtectCounter >= ProtectDuration)
 	{
 		IsProtecting = false;
 		ProtectCounter = 0;
-		StopProtecting();
+		if(IsValid(ProtectedBean))	ProtectedBean->StopProtecting();
 	}
 	if (CanHeal && !IsHealing)
 	{
@@ -193,8 +206,8 @@ void AEnemy::SupportFunction()
 	{
 		if (ProtectCounter >= ProtectDelay + ProtectDuration)
 		{
-			TryToFindAllies();
-			if (ProtectedBean == nullptr || !IsValid(ProtectedBean))
+			TryToFindAlliesToProtect();
+			if (!IsValid(ProtectedBean))
 			{
 				HealCounter -= TryToFindAlliesTime;
 			}
@@ -202,11 +215,13 @@ void AEnemy::SupportFunction()
 			{
 				IsProtecting = true;
 				ProtectCounter = 0;
-				StartProtecting(ProtectedBean->GetActorLocation());				
+				//StartProtecting(ProtectedBean->GetActorLocation());				
+				ProtectedBean->IsProtected(ProtectDuration, Health->ShieldHealth);
 			}
 		}
 	}
 }
+
 
 void AEnemy::Healing(AEnemy* Target)
 {
@@ -217,9 +232,6 @@ void AEnemy::Healing(AEnemy* Target)
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, *TheFloatStr);
 	}
 }
-//void AEnemy::TryToFindAllies()
-//{		
-//}
 
 // Called to bind functionality to input
 void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

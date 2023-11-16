@@ -48,17 +48,17 @@ public:
 	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
 	float DistDegreeAngle;
 	
-	UPROPERTY(Category = Distance, BlueprintReadOnly)
+	UPROPERTY(Category = Distance, BlueprintReadWrite)
 	bool DistAttack; //Is doing a distance attack
 
-	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
 	float ReloadTime;
 
-	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
 	float FireRate;
 
 
-	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
 	int MagSize;
 
 #pragma endregion
@@ -116,6 +116,9 @@ public:
 
 	float ProtectCounter = 0;
 
+	UPROPERTY(Category = Protect, EditAnywhere, BlueprintReadWrite)
+	float MaxShieldHealth;
+	
 #pragma endregion
 
 	UPROPERTY(Category = Healing, EditAnywhere, BlueprintReadWrite)
@@ -166,6 +169,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void TryToFindAllies();
+	UFUNCTION(BlueprintImplementableEvent)
+	void TryToFindAlliesToProtect();
 
 	UFUNCTION()
 	void SupportFunction();
@@ -180,6 +185,12 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartProtecting(FVector ProtectionPos);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void IsProtected(float ShieldTime, float ProtectedShieldHealth);
+	UFUNCTION(BlueprintImplementableEvent)
+	void StopProtection();
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void StopProtecting();
 };

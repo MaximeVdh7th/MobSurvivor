@@ -15,7 +15,15 @@ void UHealth::BeginPlay()
 void UHealth::HitByProjectile(AWeaponProjectile* Projectile)
 {
 	Super::HitByProjectile(Projectile);
-
+	
+	//Shield Health
+	if (HasShield) 
+	{
+		//ShieldHealth -= GetDamage(Projectile);
+		ShieldHealth -= Projectile->GetDamages();
+		return;
+	}
+	//
 	const float damages = Projectile->GetDamages();
 
 	AddHealth(-damages);
@@ -55,4 +63,11 @@ float UHealth::GetCurrentHealthPercentage()
 	output = FMath::Clamp(output, 0, 1);
 
 	return output;
+}
+
+float UHealth::GetDamage(AWeaponProjectile* DamageProjectile)
+{
+	float LocalDamage  = DamageProjectile->GetDamages();
+	DamageProjectile->DestroyProjectile();
+	return LocalDamage;
 }
