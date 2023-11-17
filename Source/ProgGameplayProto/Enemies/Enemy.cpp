@@ -104,16 +104,8 @@ bool AEnemy::TryAttacking(const FVector& direction, float SquareLength)
 		bool IsInAngle = DotAngle < AttackTolerance && DotAngle > -AttackTolerance;
 
 
-		if ((SquareLength < DistRange * DistRange) && IsInAngle) // && IsInAngle
+		if ((SquareLength < DistRange * DistRange) && IsInAngle)
 		{
-			//GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Distance!"));
-
-			//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::LoadAttack, TimeToAttack, false);
-
-			//FTimerDelegate TimerDel;
-			//TimerDel.BindUFunction(this, FName("Projectile_BP"), direction);
-			//GetWorldTimerManager().SetTimer(UnusedHandle, TimerDel, TimeToAttack, false);
-
 			Projectile_BP(direction);
 
 			DistAttack = true;
@@ -142,7 +134,7 @@ void AEnemy::TakeDamage(AWeaponProjectile* HitActor)
 }
 
 void AEnemy::Die()
-{
+{	
 	if (IsProtecting && ProtectedBean != nullptr && IsValid(ProtectedBean))
 	{
 		ProtectedBean->StopProtection();
@@ -155,7 +147,6 @@ void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	if (MeleeAttack || DistAttack) { return; }
-
 
 
 	HealCounter += DeltaTime;
@@ -186,7 +177,7 @@ void AEnemy::SupportFunction()
 	{
 		if (HealCounter >= HealDelay + HealDuration)
 		{
-			TryToFindAllies(); //ProtectedBean = nullptr;
+			TryToFindAllies();
 			if (ProtectedBean == nullptr || !IsValid(ProtectedBean) )
 			{
 				HealCounter -= TryToFindAlliesTime;
@@ -228,8 +219,6 @@ void AEnemy::Healing(AEnemy* Target)
 	if (Target != nullptr) 
 	{
 		Target->FindComponentByClass<UHealth>()->AddHealth(HealthRestored);
-		FString TheFloatStr = FString::SanitizeFloat(Target->FindComponentByClass<UHealth>()->CurrentHealth);
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, *TheFloatStr);
 	}
 }
 
@@ -249,8 +238,6 @@ void AEnemy::DoDamage(AActor* Target)
 
 	targetHealth->HitByAttack(Damages, this);
 
-	//Attack_BP(Target);
-
 	
 	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AEnemy::ReleaseMelee, ReleaseMeleeTime, false);
 }
@@ -267,5 +254,4 @@ void AEnemy::ReleaseDistance()
 	{
 		DoDamage(UGameUtils::GetMainCharacter());
 	}
-	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Reset!"));
 }
