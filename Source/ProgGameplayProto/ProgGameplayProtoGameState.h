@@ -19,7 +19,7 @@ public:
 
 protected:
 	float GameTime = 0;
-
+	int LocalGameGold = 0;
 	bool bHasGameStarted = false;
 
 public:
@@ -27,7 +27,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	FORCEINLINE float GetGameTime() { return GameTime; }
+	FORCEINLINE void AddGold(int GoldAmount);
 
 	UFUNCTION(BlueprintCallable)
 	virtual void StartGame();
+	UFUNCTION(BlueprintCallable)
+	void EndGame(bool GameWin);
 };
