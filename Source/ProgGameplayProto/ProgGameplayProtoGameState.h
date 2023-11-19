@@ -33,4 +33,7 @@ public:
 	virtual void StartGame();
 	UFUNCTION(BlueprintCallable)
 	void EndGame(bool GameWin);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void ShowEndScreen(bool DidYouWin, int GoldEarned);
 };
