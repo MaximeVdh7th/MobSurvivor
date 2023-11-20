@@ -3,6 +3,8 @@
 
 #include "EnemySpawnerManager.h"
 
+#include <iostream>
+
 #include "EnemySpawnRule.h"
 #include "GameLevelData.h"
 #include "GameUtils.h"
@@ -14,6 +16,8 @@
 AEnemySpawnerManager::AEnemySpawnerManager()
 {
 	PrimaryActorTick.bCanEverTick = true;
+
+	enemyCount = 0;
 }
 
 void AEnemySpawnerManager::Tick(float DeltaSeconds)
@@ -112,6 +116,9 @@ bool AEnemySpawnerManager::EvaluateRangeRule(float DeltaTime, FRangeEnemySpawnRu
 
 void AEnemySpawnerManager::SpawnEnemy(TSubclassOf<AEnemy> EnemyClass)
 {
+	enemyCount += 1;
+	//std::cout << char(enemyCount);
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), enemyCount));
 	const FVector spawnLocation = GetSpawnLocation();
 
 	GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);

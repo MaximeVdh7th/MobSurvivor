@@ -53,4 +53,8 @@ protected:
 	virtual void SpawnEnemy(TSubclassOf<AEnemy> EnemyClass);
 
 	virtual FVector GetSpawnLocation();
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 enemyCount;
 };
