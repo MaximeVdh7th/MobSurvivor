@@ -37,3 +37,17 @@ public:
 	UPROPERTY()
 	float NumberOfEnemyToSpawn = 0;
 };
+
+UCLASS()
+class PROGGAMEPLAYPROTO_API AEnemySpawnRule : public AInfo
+{
+	GENERATED_BODY()
+
+public:
+	
+	void ChangeSpawnRule(FPunctualEnemySpawnRule);
+	
+};
+
+
+

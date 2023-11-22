@@ -2,12 +2,13 @@
 
 
 #include "WaveManager.h"
+#include "ProgGameplayProto\EnemySpawnRule.h"
 
 AWaveManager::AWaveManager()
 {
-	PrimaryActorTick.bCanEverTick() = true;
-	int EnemyNumbers;
-	char* enemytype;
-
+	PrimaryActorTick.bCanEverTick = true;
+	
 }
+
+
 

@@ -14,6 +14,10 @@ class PROGGAMEPLAYPROTO_API AWaveManager : public AInfo
 {
 	GENERATED_BODY()
 
+public :
+	AWaveManager();
+	int EnemyNumbers;
+	char* enemytype;
 
 	
 };

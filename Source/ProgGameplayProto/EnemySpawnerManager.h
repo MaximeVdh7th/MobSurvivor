@@ -54,6 +54,9 @@ protected:
 
 	virtual FVector GetSpawnLocation();
 
+	virtual void GetWave(int WaveIndex);
+
+	virtual void WaveEndCondition(float TimeElapsed, int EnemiesRemaining);
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int32 enemyCount;

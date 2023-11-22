@@ -138,3 +138,13 @@ FVector AEnemySpawnerManager::GetSpawnLocation()
 
 	return output;
 }
+
+void AEnemySpawnerManager::GetWave(int WaveIndex)
+{
+	
+}
+
+void AEnemySpawnerManager::WaveEndCondition(float TimeElapsed, int EnemiesRemaining)
+{
+	
+}
