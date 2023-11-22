@@ -4,7 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+
+#include "Bonuses/FUpgradeValueStruct.h"
+
 #include "MySaveGame.generated.h"
+
 
 /**
  * 
@@ -18,4 +22,6 @@ class PROGGAMEPLAYPROTO_API UMySaveGame : public USaveGame
 	FString SaveSlotName = TEXT("Default");
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Gold;
+
+	FUpgradeValueStruct UpgradeStrut;
 };
