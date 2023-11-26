@@ -22,6 +22,9 @@ struct FUpgradeValueStruct
 		int NUpgrade;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<int> LevelByUpgrade;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int UpgradeCosts;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -37,8 +40,6 @@ struct FUpgradeValueStruct
 		float GoldLuck;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float XPLuck;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float Health;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float InvicibilityTime;
 
@@ -62,7 +63,7 @@ struct FUpgradeValueStruct
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float BombCooldown;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float BombNotSelfDamage;
+		bool BombNotSelfDamage;
 
 #pragma  endregion
 

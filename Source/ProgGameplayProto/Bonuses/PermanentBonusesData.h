@@ -16,11 +16,7 @@ class PROGGAMEPLAYPROTO_API UPermanentBonusesData : public UPrimaryDataAsset
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (MultiLine = true))
-		FText Description;
-
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int NUpgrade;
+		TArray<FText> Description;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<int> UpgradeCosts;
@@ -38,8 +34,6 @@ public:
 		TArray<float> GoldLuck;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> XPLuck;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<float> Health;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> InvicibilityTime;
 
@@ -63,6 +57,5 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> BombCooldown;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<bool> BombNotSelfDamage;
-	
+		TArray<bool> BombNotSelfDamage;	
 };
