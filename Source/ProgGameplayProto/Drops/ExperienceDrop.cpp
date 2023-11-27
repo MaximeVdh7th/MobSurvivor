@@ -7,6 +7,7 @@
 #include "ProgGameplayProto/ExperienceComponent.h"
 #include "ProgGameplayProto/GameUtils.h"
 #include "ProgGameplayProto/ProgGameplayProtoCharacter.h"
+#include "../GameUtils.h"
 
 void AExperienceDrop::Collect()
 {
@@ -16,6 +17,7 @@ void AExperienceDrop::Collect()
 
 	if (IsValid(mainCharacter))
 	{
+		ExperienceAmount *= FMath::Max(1, UGameUtils::XPMultiplier);
 		mainCharacter->GetExperience()->AddExperience(ExperienceAmount);
 	}
 

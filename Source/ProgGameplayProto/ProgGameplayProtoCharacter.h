@@ -67,6 +67,7 @@ public:
 
 	virtual bool WantsToShoot();
 	void SetupDefaultWeapon();
+	void SetupSaveUpgrade();
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = WeaponData)
@@ -89,6 +90,8 @@ protected:
 
 	bool bIsHoldingShoot = false;
 	bool bIsAutoFire = false;
+
+	float InvincibilityTime = 0;
 
 protected:
 

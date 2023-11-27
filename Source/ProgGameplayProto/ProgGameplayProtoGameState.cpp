@@ -32,10 +32,17 @@ void AProgGameplayProtoGameState::EndGame(bool GameWin)
 	//Win/Lose screen
 	ShowEndScreen(GameWin, LocalGameGold);
 
+
 	if (UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass())))
 	{
 		// Set data on the savegame object.
-		SaveGameInstance->Gold = SaveGameInstance->Gold + LocalGameGold;
+		if (UMySaveGame* LoadedGame = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot("Default", 0)))
+		{
+			SaveGameInstance->UpgradeStrut = LoadedGame->UpgradeStrut;
+			SaveGameInstance->Gold = LoadedGame->Gold;
+		}
+
+		SaveGameInstance->Gold += LocalGameGold;
 	
 		// Save the data immediately.
 		if (UGameplayStatics::SaveGameToSlot(SaveGameInstance, "Default", 0))

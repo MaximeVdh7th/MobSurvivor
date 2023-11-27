@@ -18,13 +18,14 @@ class PROGGAMEPLAYPROTO_API UHealth : public UProjectileInteraction
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float MaxHealth = 10;
-
 
 	virtual void BeginPlay() override;
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MaxHealth = 10;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float RegenerationMultiplier = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool HasShield;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

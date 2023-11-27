@@ -21,4 +21,18 @@ class PROGGAMEPLAYPROTO_API UGameUtils : public UBlueprintFunctionLibrary
 public:
 	UFUNCTION(BlueprintPure, Category = "Manager")
 	static AProgGameplayProtoCharacter* GetMainCharacter();
+
+	static float GoldLuck;
+	static float GoldMultiplier;
+	static float XPLuck;
+	static float XPMultiplier;
+	static float HPLuck;
+	static float HPMultiplier;
 };
+
+float UGameUtils::GoldLuck = 0;
+float UGameUtils::GoldMultiplier = 1;
+float UGameUtils::XPLuck = 0;
+float UGameUtils::XPMultiplier = 1;
+float UGameUtils::HPLuck = 0;
+float UGameUtils::HPMultiplier = 1;

@@ -39,7 +39,15 @@ struct FUpgradeValueStruct
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float GoldLuck;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float GoldMultiplier;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float XPLuck;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float XPMultiplier;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float HPLuck;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float HPMultiplier;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float InvicibilityTime;
 

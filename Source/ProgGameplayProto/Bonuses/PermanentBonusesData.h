@@ -33,7 +33,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> GoldLuck;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<float> GoldMultiplier;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> XPLuck;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<float> XPMultiplier;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<float> HPLuck;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<float> HPMultiplier;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> InvicibilityTime;
 

@@ -38,5 +38,5 @@ class PROGGAMEPLAYPROTO_API UMySaveGame : public USaveGame
 	FUpgradeValueStruct ConvertUpdateToStruct(UPermanentBonusesData* Data, int32 Index);
 
 private:
-	float GetGoodestIndex(TArray<float>* List, int32 Index);
+	float GetBestIndex(TArray<float>* List, int32 Index);
 };

@@ -22,6 +22,9 @@
 #include "Weapons/WeaponData.h"
 #include "Weapons/WeaponProjectile.h"
 
+#include "MySaveGame.h"
+#include "Kismet/GameplayStatics.h"
+
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 //////////////////////////////////////////////////////////////////////////
@@ -91,10 +94,26 @@ void AProgGameplayProtoCharacter::SetupDefaultWeapon()
 	}
 }
 
+void AProgGameplayProtoCharacter::SetupSaveUpgrade()
+{
+	if (UMySaveGame* LoadedGame = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot("Default", 0)))
+	{
+		Health->CurrentHealth	+= LoadedGame->UpgradeStrut.HPMax;
+		Health->MaxHealth		+=  LoadedGame->UpgradeStrut.HPMax;
+		Health->RegenerationMultiplier +=  LoadedGame->UpgradeStrut.HPRegen;
+
+		DropsCollector->SetBoundsScale(LoadedGame->UpgradeStrut.CollectionDistance);
+		InvincibilityTime = LoadedGame->UpgradeStrut.InvicibilityTime;
+
+		//UE_LOG(LogTemp, Warning, TEXT("LOADED: %s"), *LoadedGame->PlayerName);
+	}
+}
+
 void AProgGameplayProtoCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+	SetupSaveUpgrade();
 
 	RegisterInstance();
 
