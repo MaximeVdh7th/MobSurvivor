@@ -32,6 +32,8 @@ public:
 	float ShieldHealth;
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite)
 	float CurrentHealth;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UCurveFloat* HP_Curve;
 	UPROPERTY()
 	FOnHealthDie OnBeforeHealthDie;
 
@@ -55,6 +57,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE float GetMaxHealth() { return MaxHealth; }
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE void SetMaxHealth(float DefaultMax_Health, float time);
 
 	float GetDamage(AWeaponProjectile* DamageProjectile);
 };

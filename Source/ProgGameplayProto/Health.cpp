@@ -75,3 +75,13 @@ float UHealth::GetDamage(AWeaponProjectile* DamageProjectile)
 	DamageProjectile->DestroyProjectile();
 	return LocalDamage;
 }
+
+void UHealth::SetMaxHealth(float DefaultMax_Health, float time)
+{
+
+	if (IsValid(HP_Curve))
+	{
+		MaxHealth = DefaultMax_Health + HP_Curve->GetFloatValue(time);
+		CurrentHealth = MaxHealth;
+	}
+}
