@@ -46,6 +46,7 @@ public:
 public:
 	virtual void HitByProjectile(AWeaponProjectile* Projectile) override;
 	virtual void HitByAttack(float Damages, AActor* Attacker);
+	UFUNCTION(BlueprintCallable)
 	virtual void AddHealth(float Amount);
 	virtual void Die();	
 

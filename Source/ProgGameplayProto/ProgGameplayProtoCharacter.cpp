@@ -101,6 +101,8 @@ void AProgGameplayProtoCharacter::SetupSaveUpgrade()
 		Health->MaxHealth		+=  LoadedGame->UpgradeStrut.HPMax;
 		Health->RegenerationMultiplier +=  LoadedGame->UpgradeStrut.HPRegen;
 
+		Damage_Amount = LoadedGame->UpgradeStrut.BombDamage;
+
 		DropsCollector->SetBoundsScale(LoadedGame->UpgradeStrut.CollectionDistance);
 		InvincibilityTime = LoadedGame->UpgradeStrut.InvicibilityTime;
 

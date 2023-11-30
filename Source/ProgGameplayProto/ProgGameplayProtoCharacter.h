@@ -61,6 +61,8 @@ public:
 	AProgGameplayProtoCharacter();
 
 	static AProgGameplayProtoCharacter* Instance;
+	UPROPERTY(BlueprintReadOnly)
+	float Damage_Amount;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon)
 	TSubclassOf<AWeaponProjectile> WeaponProjectileToSpawn;
