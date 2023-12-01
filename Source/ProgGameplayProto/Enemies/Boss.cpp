@@ -33,14 +33,83 @@ ABoss::ABoss()
 void ABoss::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	Health->OnHealthDie.AddDynamic(this, &ABoss::Die);
+
+	UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
+	//EnemiesHealthBar->SetOwnerEnemy(this);	
 }
+
 
 // Called every frame
 void ABoss::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	const AProgGameplayProtoCharacter* player = UGameUtils::GetMainCharacter();
+
+	if (!IsValid(player)) return;
+
+	FVector direction = player->GetActorLocation() - GetActorLocation();
+	direction.Z = 0;
+
+	float dist = direction.Length();
+	if(dist > DashTriggerDistance)
+	{
+		IsDashing = true;
+		DashDistanceTimer = 0;
+		DashDistanceTarget = dist + DashDistance;
+		LastPlayerDir = direction;
+		LastPlayerDir.Normalize();
+	}
+
+	Counters(DeltaTime);
+
+	MoveTowardPlayer(DeltaTime, direction);
+
+}
+
+void ABoss::Counters(float& DeltaTime)
+{
+	if(IsDashing)
+	{
+		DashDistanceTimer += DashSpeed * DeltaTime;
+		if(DashDistanceTimer >= DashDistanceTarget)
+		{
+			IsDashing = false;
+			return;
+		}		
+	}
+}
+
+void ABoss::MoveTowardPlayer(float& DeltaTime, FVector& direction)
+{
+	float SquareLength = direction.SquaredLength();
+	direction.Normalize();
+
+	if(IsDashing)
+	{
+		const FVector movement = LastPlayerDir * DashSpeed * DeltaTime;
+		AddActorWorldOffset(movement);
+		return;
+	}
+
+	FVector movement = direction * MoveSpeed * DeltaTime;
+	AddActorWorldOffset(movement);
+
+
+	//Custom Rotation towards the player
+	float Tangent = atan2(direction.Y, direction.X) / PI * 180;//Tangent = Opposite / adjascent == Y / X => Rad to Degree
+
+	FRotator Rot = FRotator(0, Tangent, 0);
+	FQuat QuatRotation = FQuat(Rot);
+
+	SetActorRotation(FMath::QInterpTo(GetActorRotation().Quaternion(), QuatRotation, DeltaTime, RotationRate));
+}
+
+void ABoss::Die()
+{
+	Destroy();
 }
 
 // Called to bind functionality to input
@@ -48,4 +117,3 @@ void ABoss::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
-

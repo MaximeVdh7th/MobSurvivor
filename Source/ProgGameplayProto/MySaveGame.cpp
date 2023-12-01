@@ -59,29 +59,29 @@ FUpgradeValueStruct UMySaveGame::ConvertUpdateToStruct(UPermanentBonusesData* Da
 {
 	FUpgradeValueStruct SaveStruct;
 
-	SaveStruct.HPMax				= GetBestIndex(&Data->HPMax,Index);
-	SaveStruct.HPRegen				= GetBestIndex(&Data->HPRegen,Index);
-	SaveStruct.CollectionDistance	= GetBestIndex(&Data->CollectionDistance,Index);
-	SaveStruct.GoldLuck				= GetBestIndex(&Data->GoldLuck,Index);
-	SaveStruct.GoldMultiplier		= GetBestIndex(&Data->XPMultiplier,Index);
-	SaveStruct.XPLuck				= GetBestIndex(&Data->XPLuck,Index);
-	SaveStruct.XPMultiplier			= GetBestIndex(&Data->GoldMultiplier,Index);
-	SaveStruct.HPLuck				= GetBestIndex(&Data->HPMultiplier, Index);
-	SaveStruct.HPMultiplier			= GetBestIndex(&Data->HPMultiplier, Index);
-	SaveStruct.InvicibilityTime		= GetBestIndex(&Data->InvicibilityTime,Index);
+	SaveStruct.HPMax				= GetBestIndex(Data->HPMax,Index);
+	SaveStruct.HPRegen				= GetBestIndex(Data->HPRegen,Index);
+	SaveStruct.CollectionDistance	= GetBestIndex(Data->CollectionDistance,Index);
+	SaveStruct.GoldLuck				= GetBestIndex(Data->GoldLuck,Index);
+	SaveStruct.GoldMultiplier		= GetBestIndex(Data->XPMultiplier,Index);
+	SaveStruct.XPLuck				= GetBestIndex(Data->XPLuck,Index);
+	SaveStruct.XPMultiplier			= GetBestIndex(Data->GoldMultiplier,Index);
+	SaveStruct.HPLuck				= GetBestIndex(Data->HPMultiplier, Index);
+	SaveStruct.HPMultiplier			= GetBestIndex(Data->HPMultiplier, Index);
+	SaveStruct.InvicibilityTime		= GetBestIndex(Data->InvicibilityTime,Index);
 	
 	
-	SaveStruct.DashDistance = GetBestIndex(&Data->DashDistance,Index);
-	SaveStruct.DashCooldown = GetBestIndex(&Data->DashCooldown,Index);
+	SaveStruct.DashDistance = GetBestIndex(Data->DashDistance,Index);
+	SaveStruct.DashCooldown = GetBestIndex(Data->DashCooldown,Index);
 	
 	
-	SaveStruct.ShieldCooldown	= GetBestIndex(&Data->ShieldCooldown,Index);
-	SaveStruct.ShieldAbsortion	= GetBestIndex(&Data->ShieldAbsortion,Index);
+	SaveStruct.ShieldCooldown	= GetBestIndex(Data->ShieldCooldown,Index);
+	SaveStruct.ShieldAbsortion	= GetBestIndex(Data->ShieldAbsortion,Index);
 	
 	
-	SaveStruct.BombCooldown		= GetBestIndex(&Data->BombCooldown,Index);
-	SaveStruct.BombRadiusDamage = GetBestIndex(&Data->BombRadiusDamage,Index);
-	SaveStruct.BombDamage		= GetBestIndex(&Data->BombDamage,Index);
+	SaveStruct.BombCooldown		= GetBestIndex(Data->BombCooldown,Index);
+	SaveStruct.BombRadiusDamage = GetBestIndex(Data->BombRadiusDamage,Index);
+	SaveStruct.BombDamage		= GetBestIndex(Data->BombDamage,Index);
 	
 	if(Data->BombNotSelfDamage.Num() >= Index && Data->BombNotSelfDamage.Num() != 0)
 	{
@@ -95,27 +95,20 @@ FUpgradeValueStruct UMySaveGame::ConvertUpdateToStruct(UPermanentBonusesData* Da
 }
 
 // Get the good value per index
-float UMySaveGame::GetBestIndex(TArray<float>* List, int32 Index)
+float UMySaveGame::GetBestIndex(const TArray<float>& List, int32 Index)
 {
 	float bestValue;
-	if(List->Num() == 0)
+	if(List.Num() == 0)
 	{
 		bestValue = 0;
 	}	
-	else if(List->Num() >= Index)
+	else if(List.Num() >= Index)
 	{
-		//int Nombre;
-		//int* ReferenceANombre = &Nombre;
-
-		TArray<float> test = *List;
-		bestValue = test[Index];
-
-		//bestValue = *List[Index];
+		bestValue = List[Index];
 	}
 	else
 	{
-		bestValue = List->Last();
+		bestValue = List.Last();
 	}
 	return bestValue;
-	//return List[Index] ? List->Num()-1 >= Index : List->Last();
 }

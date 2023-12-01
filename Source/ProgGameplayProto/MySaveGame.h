@@ -32,11 +32,11 @@ class PROGGAMEPLAYPROTO_API UMySaveGame : public USaveGame
 	UPARAM(DisplayName="CombineStruct") void CombineStruct(FUpgradeValueStruct Bonuses, TArray<int> LevelByUpgrade);
 
 	UFUNCTION(BlueprintCallable)
-	FUpgradeValueStruct CombineBonuses(TArray<FUpgradeValueStruct> Bonuses);
+	static FUpgradeValueStruct CombineBonuses(TArray<FUpgradeValueStruct> Bonuses);
 
 	UFUNCTION(BlueprintCallable)
 	FUpgradeValueStruct ConvertUpdateToStruct(UPermanentBonusesData* Data, int32 Index);
 
 private:
-	float GetBestIndex(TArray<float>* List, int32 Index);
+	static float GetBestIndex(const TArray<float>& List, int32 Index);
 };
