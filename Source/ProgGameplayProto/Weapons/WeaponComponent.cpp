@@ -264,8 +264,8 @@ float UWeaponComponent::GetExplosionRadius()
 	{
 
 		float value = FMath::Max(50, WeaponData->ExplosionRadius + BonusExplosionRadius);
-		float multiplier = FMath::Max(0.1f, WeaponData->ExplosionRadiusMultiplier + BonusExplosionRadiusMultiplier);
-		float output = WeaponData->ExplosionRadius;
+		float multiplier = FMath::Max(1, WeaponData->ExplosionRadiusMultiplier + BonusExplosionRadiusMultiplier);
+		float output = FMath::Max(50, value * multiplier);
 		return output;
 	}
 	else return 0;
