@@ -22,17 +22,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Manager")
 	static AProgGameplayProtoCharacter* GetMainCharacter();
 
-	static float GoldLuck;
-	static float GoldMultiplier;
-	static float XPLuck;
-	static float XPMultiplier;
-	static float HPLuck;
-	static float HPMultiplier;
+	inline static float GoldLuck = 0;
+	inline static float GoldMultiplier = 1;
+	inline static float XPLuck = 0;
+	inline static float XPMultiplier = 1;
+	inline static float HPLuck = 0;
+	inline static float HPMultiplier = 1;
 };
-
-float UGameUtils::GoldLuck = 0;
-float UGameUtils::GoldMultiplier = 1;
-float UGameUtils::XPLuck = 0;
-float UGameUtils::XPMultiplier = 1;
-float UGameUtils::HPLuck = 0;
-float UGameUtils::HPMultiplier = 1;

@@ -17,7 +17,7 @@ UCLASS()
 class PROGGAMEPLAYPROTO_API AEnemySpawnerManager : public AInfo
 {
 	GENERATED_BODY()
-
+		
 public:
 	AEnemySpawnerManager();
 
