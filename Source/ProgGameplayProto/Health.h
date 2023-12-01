@@ -43,6 +43,9 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChanged OnHealthChanged;
 
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	bool IsInvincible;
+
 public:
 	virtual void HitByProjectile(AWeaponProjectile* Projectile) override;
 	virtual void HitByAttack(float Damages, AActor* Attacker);

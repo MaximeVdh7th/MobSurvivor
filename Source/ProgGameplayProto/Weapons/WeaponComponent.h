@@ -52,6 +52,8 @@ protected:
 	virtual float GetDamages();
 	virtual float GetCriticalHitChance();
 	virtual float GetCriticalHitDamagesMultiplier();
+	virtual float GetExplosionRadius();
+	
 
 public:
 	// Called every frame
@@ -85,4 +87,6 @@ public:
 	float BonusCriticalHitChance = 0;
 	float BonusCriticalHitChanceMultiplier = 0;
 	float BonusCriticalHitDamageMultiplier = 0;
+	float BonusExplosionRadius = 0;
+	float BonusExplosionRadiusMultiplier = 0;
 };

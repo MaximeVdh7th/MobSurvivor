@@ -76,4 +76,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Data|Criticals")
 	float CriticalHitDamageMultiplier = 2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Data|AOE")
+	bool CanExplode = false;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Data|AOE")
+	float ExplosionRadius = 50;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Data|AOE")
+	float ExplosionRadiusMultiplier = 1;
 };

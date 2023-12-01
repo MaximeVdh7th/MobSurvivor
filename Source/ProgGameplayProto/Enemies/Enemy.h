@@ -147,6 +147,7 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	virtual void TakeDamage(AWeaponProjectile* HitActor);
+	UFUNCTION()
 	virtual void Die();
 
 public:

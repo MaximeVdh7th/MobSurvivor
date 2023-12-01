@@ -31,7 +31,10 @@ void UHealth::HitByProjectile(AWeaponProjectile* Projectile)
 
 void UHealth::HitByAttack(float Damages, AActor* Attacker)
 {
-	AddHealth(-Damages);
+	if (not IsInvincible)
+	{
+		AddHealth(-Damages);
+	}
 }
 
 void UHealth::AddHealth(float Amount)

@@ -256,3 +256,19 @@ float UWeaponComponent::GetCriticalHitDamagesMultiplier()
 	return output;
 }
 
+float UWeaponComponent::GetExplosionRadius()
+{
+	if (!IsValid(WeaponData)) return 0.0f;
+
+	if (WeaponData->CanExplode == true)
+	{
+
+		float value = FMath::Max(50, WeaponData->ExplosionRadius + BonusExplosionRadius);
+		float multiplier = FMath::Max(0.1f, WeaponData->ProjectileSpeedMultiplier + BonusProjectileSpeedMultiplier);
+		float output = WeaponData->ExplosionRadius 
+	}
+	
+}
+
+
+
