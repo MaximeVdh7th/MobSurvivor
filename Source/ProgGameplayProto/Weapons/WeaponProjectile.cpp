@@ -5,6 +5,7 @@
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "ProgGameplayProto/ProjectileInteraction.h"
+#include "ProgGameplayProto/Enemies/Enemy.h"
 
 // Sets default values
 AWeaponProjectile::AWeaponProjectile()
@@ -18,6 +19,14 @@ AWeaponProjectile::AWeaponProjectile()
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
 	Mesh->SetupAttachment(Collision);
 	Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	RadialForce = CreateDefaultSubobject<URadialForceComponent>("RadialForce");
+	RadialForce->SetupAttachment(Collision);
+
+	TriggerZone = CreateDefaultSubobject <USphereComponent> ("TriggerZone");
+	TriggerZone->SetupAttachment(Collision);
+	TriggerZone->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	TriggerZone->SetSphereRadius(ExplosionRadius);
 }
 
 // Called when the game starts or when spawned
@@ -34,7 +43,7 @@ void AWeaponProjectile::Tick(float DeltaTime)
 	MoveProjectile(DeltaTime);
 }
 
-void AWeaponProjectile::SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier)
+void AWeaponProjectile::SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier, float NewExplosionRadius)
 {
 	Size = NewSize;
 	Range = NewRange;
@@ -42,6 +51,7 @@ void AWeaponProjectile::SetParameters(float NewSize, float NewRange, float NewSp
 	BaseDamages = NewBaseDamages;
 	CriticalHitChance = NewCriticalHitChance;
 	CriticalHitMultiplier = NewCriticalHitMultiplier;
+	ExplosionRadius = NewExplosionRadius;
 }
 
 void AWeaponProjectile::MoveProjectile(float DeltaTime)
@@ -98,7 +108,7 @@ void AWeaponProjectile::HitSomething(AActor* OtherActor, FVector HitLocation, FV
 	}
 
 	OnProjectileHit.Broadcast(this, HitLocation, OriginLocation);
-
+	//RadialForce->FireImpulse();
 	NumberOfHitsBeforeDestroy -= 1;
 
 	if (NumberOfHitsBeforeDestroy < 1)
@@ -127,3 +137,17 @@ float AWeaponProjectile::GetDamages()
 
 	return output;
 }
+
+void AWeaponProjectile::GetZoneDamages()
+{
+	/*
+	RadialForce->FireImpulse();
+	TArray<AActor*> Enemylist = TArray<AEnemy>;
+	RadialForce->AddObjectTypeToAffect(AEnemy);
+	//TArray<AActor*> Enemylist = TriggerZone->OnComponentBeginOverlap.
+	TArray<FHitResult>
+	*/
+
+
+}
+

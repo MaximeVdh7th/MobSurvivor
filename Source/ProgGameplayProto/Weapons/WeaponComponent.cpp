@@ -83,7 +83,7 @@ void UWeaponComponent::SpawnProjectile(FVector Direction)
 
 	AWeaponProjectile* projectile = Character->GetWorld()->SpawnActor<AWeaponProjectile>(Character->WeaponProjectileToSpawn, spawnLocation, spawnRotation);
 
-	projectile->SetParameters(GetProjectileSize(), GetProjectileRange(), GetProjectileSpeed(), GetDamages(), GetCriticalHitChance(), GetCriticalHitDamagesMultiplier());
+	projectile->SetParameters(GetProjectileSize(), GetProjectileRange(), GetProjectileSpeed(), GetDamages(), GetCriticalHitChance(), GetCriticalHitDamagesMultiplier(), GetExplosionRadius());
 
 	if (Direction == FVector::ZeroVector)
 		Direction = Character->GetActorForwardVector();

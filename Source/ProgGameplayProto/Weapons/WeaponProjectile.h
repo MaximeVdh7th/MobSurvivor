@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PhysicsEngine/RadialForceComponent.h"
 #include "WeaponProjectile.generated.h"
 
 class UProjectileEffect;
@@ -29,6 +30,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* Mesh;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	URadialForceComponent* RadialForce;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USphereComponent* TriggerZone;
+
 	UPROPERTY()
 	AActor* LastActorHit;
 
@@ -40,9 +47,9 @@ protected:
 	float BaseDamages;
 	float CriticalHitChance;
 	float CriticalHitMultiplier;
-
-	bool bCanPierce;
 	
+	bool bCanPierce = false;
+	float ExplosionRadius;
 
 	float ElapsedRange;
 
@@ -68,7 +75,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	virtual void SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier);
+	virtual void SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier, float NewExplosionRadius);
 
 	virtual void MoveProjectile(float DeltaTime);
 
@@ -81,6 +88,8 @@ public:
 	virtual void DestroyProjectile();
 
 	virtual float GetDamages();
+
+	virtual void GetZoneDamages();
 
 public:
 	FORCEINLINE virtual void SetDirection(FVector NewDirection) { Direction = NewDirection; }
