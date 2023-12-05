@@ -68,6 +68,7 @@ bool AEnemySpawnerManager::EvaluatePunctualRule(FPunctualEnemySpawnRule Rule)
 		for (int32 i = 0; i < Rule.Number; i++)
 		{
 			SpawnEnemy(Rule.Enemy);
+
 		}
 
 		return true;
@@ -120,8 +121,9 @@ void AEnemySpawnerManager::SpawnEnemy(TSubclassOf<AEnemy> EnemyClass)
 	//std::cout << char(enemyCount);
 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), enemyCount));
 	const FVector spawnLocation = GetSpawnLocation();
-
-	GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
+	//GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
+	AEnemy* localEnemy = GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
+	//localEnemy->role
 }
 
 FVector AEnemySpawnerManager::GetSpawnLocation()

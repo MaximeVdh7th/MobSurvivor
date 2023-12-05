@@ -89,7 +89,7 @@ public:
 
 	virtual float GetDamages();
 
-	virtual void GetZoneDamages();
+	
 
 public:
 	FORCEINLINE virtual void SetDirection(FVector NewDirection) { Direction = NewDirection; }

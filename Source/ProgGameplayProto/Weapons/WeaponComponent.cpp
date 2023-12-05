@@ -5,7 +5,9 @@
 #include "ProgGameplayProto/Weapons/WeaponData.h"
 #include "ProgGameplayProto/ProgGameplayProtoCharacter.h"
 #include "ProgGameplayProto/Weapons/WeaponProjectile.h"
+#include "ProgGameplayProto/Weapons/WeaponExplosiveProjectile.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "ProgGameplayProto/Effects/ProjectileEffect.h"
 
 // Sets default values for this component's properties
@@ -80,8 +82,20 @@ void UWeaponComponent::SpawnProjectile(FVector Direction)
 {
 	const FVector spawnLocation = Character->GetActorLocation();
 	const FRotator spawnRotation = FRotator::ZeroRotator;
+	AWeaponProjectile* projectile;
 
-	AWeaponProjectile* projectile = Character->GetWorld()->SpawnActor<AWeaponProjectile>(Character->WeaponProjectileToSpawn, spawnLocation, spawnRotation);
+	UKismetMathLibrary::ClassIsChildOf(Character->WeaponProjectileToSpawn, AWeaponExplosiveProjectile::StaticClass());
+
+	if (WeaponData->CanExplode)
+	{
+		AWeaponExplosiveProjectile* projectileExplosif = GetWorld()->SpawnActor<AWeaponExplosiveProjectile>(Character->WeaponProjectileToSpawn, spawnLocation, spawnRotation);
+		projectile = projectileExplosif;
+	}
+	else
+	{
+		projectile = Character->GetWorld()->SpawnActor<AWeaponProjectile>(Character->WeaponProjectileToSpawn, spawnLocation, spawnRotation);
+	}
+	
 
 	projectile->SetParameters(GetProjectileSize(), GetProjectileRange(), GetProjectileSpeed(), GetDamages(), GetCriticalHitChance(), GetCriticalHitDamagesMultiplier(), GetExplosionRadius());
 

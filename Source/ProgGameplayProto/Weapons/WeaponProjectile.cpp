@@ -138,16 +138,5 @@ float AWeaponProjectile::GetDamages()
 	return output;
 }
 
-void AWeaponProjectile::GetZoneDamages()
-{
-	/*
-	RadialForce->FireImpulse();
-	TArray<AActor*> Enemylist = TArray<AEnemy>;
-	RadialForce->AddObjectTypeToAffect(AEnemy);
-	//TArray<AActor*> Enemylist = TriggerZone->OnComponentBeginOverlap.
-	TArray<FHitResult>
-	*/
 
-
-}
 
