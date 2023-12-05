@@ -99,7 +99,6 @@ void AProgGameplayProtoCharacter::SetupSaveUpgrade()
 	{
 		Health->CurrentHealth	+= LoadedGame->UpgradeStrut.HPMax;
 		Health->MaxHealth		+=  LoadedGame->UpgradeStrut.HPMax;
-		Health->RegenerationMultiplier +=  LoadedGame->UpgradeStrut.HPRegen;
 
 		Damage_Amount += LoadedGame->UpgradeStrut.BombDamage;
 

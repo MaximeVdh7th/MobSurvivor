@@ -49,6 +49,10 @@ public:
 	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
 	bool CanDoDistanceAttack;
 
+	FVector PlayerOffset;
+	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
+	FVector PlayerOffsetRange = FVector(40,150,0);
+
 	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
 	float DistRange;
 
@@ -154,6 +158,7 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void TakeDamage(AWeaponProjectile* HitActor);
+
 	UFUNCTION()
 	virtual void Die();
 

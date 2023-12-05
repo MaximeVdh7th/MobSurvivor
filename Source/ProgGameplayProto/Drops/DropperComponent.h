@@ -17,7 +17,7 @@ public:
 	TSubclassOf<AActor> ObjectToSpawn;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Weight;
+	float DropRate = 0.5f;
 };
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))

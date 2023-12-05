@@ -6,6 +6,7 @@
 #include "ProgGameplayProto/GameUtils.h"
 #include "ProgGameplayProto/ProgGameplayProtoCharacter.h"
 #include "ProgGameplayProto/Health.h"
+#include "../GameUtils.h"
 
 void AHealthDrop::Collect()
 {
@@ -17,5 +18,6 @@ void AHealthDrop::Collect()
 		HealthAmount *= FMath::Max(1, UGameUtils::HPMultiplier);
 		mainCharacter->FindComponentByClass<UHealth>()->AddHealth(HealthAmount);
 	}
+
 	Destroy();
 }

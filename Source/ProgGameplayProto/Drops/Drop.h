@@ -17,6 +17,8 @@ public:
 	// Sets default values for this actor's properties
 	ADrop();
 
+	float weight;
+	
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float CollectionSpeed = 1000;

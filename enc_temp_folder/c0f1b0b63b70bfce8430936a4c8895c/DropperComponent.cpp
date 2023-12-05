@@ -3,13 +3,9 @@
 
 #include "DropperComponent.h"
 
-#include "ExperienceDrop.h"
 #include "GoldDrop.h"
-#include "HealthDrop.h"
 #include "Logging/StructuredLog.h"
-#include "Kismet/KismetMathLibrary.h"
 #include "ProgGameplayProto/GameUtils.h"
-#include "ProgGameplayProto/Enemies/Enemy.h"
 
 // Sets default values for this component's properties
 UDropperComponent::UDropperComponent()
@@ -36,48 +32,31 @@ AActor* UDropperComponent::SpawnWeightedDrop()
 
 	for (int32 i = 0; i < Drops.Num(); i++)
 	{
-		if(UKismetMathLibrary::ClassIsChildOf(Drops[i].ObjectToSpawn, AGoldDrop::StaticClass()))
+		if(Drops[i].ObjectToSpawn == AGoldDrop::StaticClass())
 		{
-			if (FMath::FRand() < UGameUtils::GoldLuck + Drops[i].DropRate)
-			{
-				FVector spawnLocation = GetRandomSpawnLocation();
-				GetWorld()->SpawnActor<AActor>(Drops[i].ObjectToSpawn, spawnLocation, FRotator::ZeroRotator);
-			}
+			
 		}
-		if (UKismetMathLibrary::ClassIsChildOf(Drops[i].ObjectToSpawn, AHealthDrop::StaticClass()))
-		{
-			if (FMath::FRand() < UGameUtils::HPLuck + Drops[i].DropRate)
-			{
-				FVector spawnLocation = GetRandomSpawnLocation();
-				GetWorld()->SpawnActor<AActor>(Drops[i].ObjectToSpawn, spawnLocation, FRotator::ZeroRotator);
-			}
-		}
-		if (UKismetMathLibrary::ClassIsChildOf(Drops[i].ObjectToSpawn, AExperienceDrop::StaticClass()))
-		{
-			if (FMath::FRand() < UGameUtils::XPLuck + Drops[i].DropRate)
-			{
-				FVector spawnLocation = GetRandomSpawnLocation();
-				GetWorld()->SpawnActor<AActor>(Drops[i].ObjectToSpawn, spawnLocation, FRotator::ZeroRotator);
-			}
-		}
-	}	
+	}
+
 	return nullptr;
+	//if (Drops.Num() < 1) return nullptr;
+
 	//AActor* spawnedActor = nullptr;
-	//
+
 	//const int32 dropIndex = GetWeightedIndex();
-	//
-	//////drop rate
+
+	////drop rate
 	//if (FMath::FRand() < Drops[dropIndex].DropRate)
 	//{
 	//	
-	//
-	//
+
+
 	//}
-	//
+
 	//FVector spawnLocation = GetRandomSpawnLocation();
-	//
+
 	//AActor* spawnedDrop = GetWorld()->SpawnActor<AActor>(Drops[dropIndex].ObjectToSpawn, spawnLocation, FRotator::ZeroRotator);
-	//
+
 	//return spawnedDrop;
 }
 

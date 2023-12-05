@@ -39,6 +39,10 @@ void UHealth::HitByAttack(float Damages, AActor* Attacker)
 
 void UHealth::AddHealth(float Amount)
 {
+	if(Amount > 0)
+	{
+		Amount *= RegenerationMultiplier;
+	}
 	CurrentHealth += Amount;
 
 	if (CurrentHealth > MaxHealth) 

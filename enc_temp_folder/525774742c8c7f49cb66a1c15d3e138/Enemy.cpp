@@ -230,7 +230,7 @@ void AEnemy::SupportFunction()
 
 void AEnemy::Healing(AEnemy* Target)
 {
-	if (IsValid(Target)) 
+	if (Target != nullptr) 
 	{
 		Target->FindComponentByClass<UHealth>()->AddHealth(HealthRestored);
 	}

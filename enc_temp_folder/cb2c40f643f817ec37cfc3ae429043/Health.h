@@ -24,7 +24,8 @@ protected:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MaxHealth = 10;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float RegenerationMultiplier = 1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool HasShield;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
