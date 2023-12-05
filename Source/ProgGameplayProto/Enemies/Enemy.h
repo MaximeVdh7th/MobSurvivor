@@ -36,6 +36,13 @@ public:
 	float RotationRate;
 
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void RoleShooter();
+	UFUNCTION(BlueprintImplementableEvent)
+	void RoleProtection();
+	UFUNCTION(BlueprintImplementableEvent)
+	void RoleHealer();
+
 #pragma region Distance attack
 
 
