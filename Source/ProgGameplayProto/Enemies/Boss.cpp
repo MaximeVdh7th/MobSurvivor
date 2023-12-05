@@ -29,6 +29,22 @@ ABoss::ABoss()
 	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 }
 
+void ABoss::Damage(AActor* Target)
+{
+	if (!Target->IsA(AProgGameplayProtoCharacter::StaticClass())) return;
+
+	UHealth* targetHealth = Target->FindComponentByClass<UHealth>();
+
+	if (!IsValid(targetHealth)) return;
+
+	if (IsDashing) 
+	{
+		targetHealth->HitByAttack(DashDamage, this);
+		IsDashing = false;
+	}
+	//if()
+}
+
 // Called when the game starts or when spawned
 void ABoss::BeginPlay()
 {

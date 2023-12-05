@@ -19,6 +19,15 @@ public:
 	// Sets default values for this pawn's properties
 	ABoss();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void EnableDashCollider();
+	UFUNCTION(BlueprintImplementableEvent)
+	void DisableDashCollider();
+
+	UFUNCTION(BlueprintCallable)
+
+	void Damage(AActor* Target);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UCapsuleComponent* Collision;
 
