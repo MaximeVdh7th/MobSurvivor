@@ -41,8 +41,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> HPLuck;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<float> HPMultiplier;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<float> InvicibilityTime;
 
 	///		DASH		///
