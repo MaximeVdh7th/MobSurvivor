@@ -47,8 +47,6 @@ struct FUpgradeValueStruct
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float HPLuck;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float HPMultiplier;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float InvicibilityTime;
 
 	///		DASH		///

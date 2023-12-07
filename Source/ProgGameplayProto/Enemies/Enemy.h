@@ -35,7 +35,9 @@ public:
 	UPROPERTY(Category = EnemyParameters, EditAnywhere, BlueprintReadWrite)
 	float RotationRate;
 
-
+	UFUNCTION(BlueprintCallable)
+	void ShooterOffset();
+	
 	UFUNCTION(BlueprintImplementableEvent)
 	void RoleShooter();
 	UFUNCTION(BlueprintImplementableEvent)
@@ -45,7 +47,7 @@ public:
 
 #pragma region Distance attack
 
-
+	bool IsRoleDistance;
 	UPROPERTY(Category = Distance, EditAnywhere, BlueprintReadWrite)
 	bool CanDoDistanceAttack;
 

@@ -31,7 +31,6 @@ FUpgradeValueStruct UMySaveGame::CombineBonuses(TArray<FUpgradeValueStruct> Bonu
 		incrementalStruct.XPLuck				+= Bonuses[i].XPLuck;
 		incrementalStruct.XPMultiplier			+= Bonuses[i].XPMultiplier;
 		incrementalStruct.HPLuck				+= Bonuses[i].HPLuck;
-		incrementalStruct.HPMultiplier			+= Bonuses[i].HPMultiplier;
 		incrementalStruct.InvicibilityTime		+= Bonuses[i].InvicibilityTime;
 		
 		
@@ -63,11 +62,10 @@ FUpgradeValueStruct UMySaveGame::ConvertUpdateToStruct(UPermanentBonusesData* Da
 	SaveStruct.HPRegen				= GetBestIndex(Data->HPRegen,Index);
 	SaveStruct.CollectionDistance	= GetBestIndex(Data->CollectionDistance,Index);
 	SaveStruct.GoldLuck				= GetBestIndex(Data->GoldLuck,Index);
-	SaveStruct.GoldMultiplier		= GetBestIndex(Data->XPMultiplier,Index);
+	SaveStruct.GoldMultiplier		= GetBestIndex(Data->GoldMultiplier,Index);
 	SaveStruct.XPLuck				= GetBestIndex(Data->XPLuck,Index);
-	SaveStruct.XPMultiplier			= GetBestIndex(Data->GoldMultiplier,Index);
-	SaveStruct.HPLuck				= GetBestIndex(Data->HPMultiplier, Index);
-	SaveStruct.HPMultiplier			= GetBestIndex(Data->HPMultiplier, Index);
+	SaveStruct.XPMultiplier			= GetBestIndex(Data->XPMultiplier,Index);
+	SaveStruct.HPLuck				= GetBestIndex(Data->HPLuck, Index);
 	SaveStruct.InvicibilityTime		= GetBestIndex(Data->InvicibilityTime,Index);
 	
 	
