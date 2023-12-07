@@ -38,15 +38,16 @@ void AEnemy::BeginPlay()
 
 	UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
 	EnemiesHealthBar->SetOwnerEnemy(this);
+}
 
-	if (CanDoDistanceAttack)
-	{
-		const AProgGameplayProtoCharacter* player = UGameUtils::GetMainCharacter();
-		if (!IsValid(player)) return;
-		FVector direction = player->GetActorLocation() - GetActorLocation();
-		direction.Normalize();
-		PlayerOffset = direction * FMath::RandRange(PlayerOffsetRange.X, PlayerOffsetRange.Y);
-	}
+void AEnemy::ShooterOffset() 
+{
+	IsRoleDistance = true;
+	const AProgGameplayProtoCharacter* player = UGameUtils::GetMainCharacter();
+	if (!IsValid(player)) return;
+	FVector direction = GetActorLocation() - player->GetActorLocation();
+	direction.Normalize();
+	PlayerOffset = direction * FMath::RandRange(PlayerOffsetRange.X, PlayerOffsetRange.Y);
 }
 
 void AEnemy::MoveTowardPlayer(float DeltaTime)
@@ -55,14 +56,9 @@ void AEnemy::MoveTowardPlayer(float DeltaTime)
 
 	if (!IsValid(player)) return;
 
-	
 	FVector direction = player->GetActorLocation() - GetActorLocation();
 
-	if(CanDoDistanceAttack)	
-		direction += PlayerOffset;
-
 	direction.Z = 0;
-
 
 	float SquareLength = direction.SquaredLength();
 	direction.Normalize();
@@ -70,11 +66,19 @@ void AEnemy::MoveTowardPlayer(float DeltaTime)
 	{
 		return;
 	}	
-	
 
 #pragma region Mov and Rotation
-
-	FVector movement = direction * MoveSpeed * DeltaTime;
+	
+	FVector movement;
+	if (IsRoleDistance && !CanDoDistanceAttack)
+	{
+		movement = player->GetActorLocation() + PlayerOffset - GetActorLocation(); movement.Z = 0; movement.Normalize();
+		movement *= MoveSpeed * DeltaTime;
+	}
+	else 
+	{	
+		movement = direction * MoveSpeed * DeltaTime;
+	}
 
 	AddActorWorldOffset(movement);
 
