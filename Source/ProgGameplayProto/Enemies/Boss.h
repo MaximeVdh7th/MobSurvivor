@@ -20,9 +20,7 @@ public:
 	ABoss();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void EnableDashCollider();
-	UFUNCTION(BlueprintImplementableEvent)
-	void DisableDashCollider();
+	void SpawnDamageZone(FVector Location);	
 
 	UFUNCTION(BlueprintCallable)
 
@@ -64,6 +62,7 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float DashDistance = 600;
 	float DashCooldown = 6;
+	float DashCooldownCounter = 6;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float DashDamage = 8;
 	float DashDistanceTimer;
@@ -76,7 +75,7 @@ protected:
 #pragma region Spin
 	float SpinTriggerDistance = 4;
 	float SpinDamage = 0.5;
-	float SpinDuration = 8;
+	float SpinDuration = 4;
 	float SpinCooldown = 16;
 	bool IsSpinning;
 #pragma endregion
@@ -88,11 +87,17 @@ protected:
 	bool IsMelee;
 #pragma endregion
 
+
 #pragma region Zone
-	float ZoneTriggerDistance = 10;
-	float ZoneRadius = 2;
-	float ZoneDamage = 0.5;
-	float InvokeZoneDuration = 1;
+	float ZoneTriggerDistance = 10;	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float ZoneDistance = 200;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpawnZoneDuration = 1;
+	float ZoneTimer;
+	int ZoneSpawned;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int NumberOfZone = 1;
 	bool IsInvokingZone;
 #pragma endregion
 

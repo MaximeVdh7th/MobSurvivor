@@ -3,6 +3,7 @@
 
 #include "Boss.h"
 
+#include "BossDamageZone.h"
 #include "EnemiesHealthBar.h"
 #include "Components/CapsuleComponent.h"
 #include "ProgGameplayProto/GameUtils.h"
@@ -42,7 +43,6 @@ void ABoss::Damage(AActor* Target)
 		targetHealth->HitByAttack(DashDamage, this);
 		IsDashing = false;
 	}
-	//if()
 }
 
 // Called when the game starts or when spawned
@@ -57,7 +57,6 @@ void ABoss::BeginPlay()
 }
 
 
-// Called every frame
 void ABoss::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -70,7 +69,14 @@ void ABoss::Tick(float DeltaTime)
 	direction.Z = 0;
 
 	float dist = direction.Length();
-	if(dist > DashTriggerDistance)
+
+	if (!IsInvokingZone && dist > ZoneTriggerDistance)
+	{
+		IsInvokingZone = true;
+		ZoneSpawned = 0;
+		ZoneTimer = 0;
+	}
+	else if(!IsDashing && DashCooldownCounter >= DashCooldown)
 	{
 		IsDashing = true;
 		DashDistanceTimer = 0;
@@ -78,7 +84,7 @@ void ABoss::Tick(float DeltaTime)
 		LastPlayerDir = direction;
 		LastPlayerDir.Normalize();
 	}
-
+	
 	Counters(DeltaTime);
 
 	MoveTowardPlayer(DeltaTime, direction);
@@ -87,14 +93,33 @@ void ABoss::Tick(float DeltaTime)
 
 void ABoss::Counters(float& DeltaTime)
 {
+	DashCooldownCounter += DeltaTime;
 	if(IsDashing)
 	{
 		DashDistanceTimer += DashSpeed * DeltaTime;
 		if(DashDistanceTimer >= DashDistanceTarget)
 		{
+			DashCooldownCounter = 0;
 			IsDashing = false;
 			return;
 		}		
+	}
+	else if (IsInvokingZone)
+	{
+		ZoneTimer += DeltaTime;
+		if (ZoneTimer >= SpawnZoneDuration)
+		{
+			ZoneTimer = 0;
+			ZoneSpawned++;
+			const AProgGameplayProtoCharacter* player = UGameUtils::GetMainCharacter();
+
+			if (!IsValid(player)) return;
+			FVector RndDir = FVector(FMath::RandRange(0, 1), FMath::RandRange(0, 1), 0); RndDir.Normalize();
+			RndDir *= FMath::RandRange(ZoneDistance, ZoneDistance * 2);
+
+			SpawnDamageZone(player->GetActorLocation() + RndDir);
+			if (ZoneSpawned >= NumberOfZone)	IsInvokingZone = false;
+		}
 	}
 }
 

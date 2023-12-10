@@ -159,7 +159,7 @@ protected:
 	virtual void MoveTowardPlayer(float DeltaTime);
 
 	UFUNCTION(BlueprintCallable)
-	void TakeDamage(AWeaponProjectile* HitActor);
+	virtual void TakeDamage(AWeaponProjectile* HitActor);
 
 	UFUNCTION()
 	virtual void Die();
