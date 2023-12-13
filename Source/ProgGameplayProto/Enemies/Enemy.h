@@ -148,6 +148,9 @@ private:
 	void ReleaseDistance();
 
 	bool TryAttacking(const FVector& direction, float SquareLength);
+
+	UFUNCTION(BlueprintCallable)
+	void TakeDamages(AWeaponProjectile* HitActor);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -158,8 +161,6 @@ protected:
 
 	virtual void MoveTowardPlayer(float DeltaTime);
 
-	UFUNCTION(BlueprintCallable)
-	virtual void TakeDamage(AWeaponProjectile* HitActor);
 
 	UFUNCTION()
 	virtual void Die();

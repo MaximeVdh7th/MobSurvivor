@@ -43,6 +43,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float RotationRate;
 
+	virtual void Die();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -51,7 +52,6 @@ protected:
 
 	void MoveTowardPlayer(float& DeltaTime, FVector& direction);
 
-	virtual void Die();
 
 	UPROPERTY(VisibleAnywhere)
 		class UWidgetComponent* HealthWidgetComp;
@@ -111,7 +111,6 @@ protected:
 	bool IsMelee;
 #pragma endregion
 
-
 #pragma region Zone
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float ZoneTriggerDistance = 600;	
@@ -133,6 +132,13 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+		void TakeDamages(AWeaponProjectile* HitActor);
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void DieVFX();
+
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

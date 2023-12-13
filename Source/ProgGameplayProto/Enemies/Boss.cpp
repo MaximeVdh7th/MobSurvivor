@@ -54,7 +54,7 @@ void ABoss::Damage(AActor* Target)
 		FVector Movement = Target->GetComponentByClass<UCharacterMovementComponent>()->GetLastUpdateVelocity(); Movement.Normalize();
 		FVector Rnd = FVector(FMath::RandRange(0.0f, 1.0f), FMath::RandRange(0.0f, 1.0f), 0); Rnd.Normalize();
 
-		Dir = FVector::CrossProduct(Dir, (Movement + Rnd) * 0.5f);
+		Dir = FVector::CrossProduct((Movement + Rnd) * 0.5f, Dir);
 		Target->GetComponentByClass<UCharacterMovementComponent>()->AddImpulse(Dir * SpinPushOnPlayer);
 	}
 	if(IsSpinning)
@@ -210,8 +210,18 @@ void ABoss::MoveTowardPlayer(float& DeltaTime, FVector& direction)
 	SetActorRotation(FMath::QInterpTo(GetActorRotation().Quaternion(), QuatRotation, DeltaTime, RotationRate));
 }
 
+void ABoss::TakeDamages(AWeaponProjectile* HitActor)
+{
+	Health->HitByProjectile(HitActor);
+	if (Health->GetCurrentHealth() <= 0)
+	{
+		Die();
+	}
+}
+
 void ABoss::Die()
 {
+	DieVFX();
 	Destroy();
 }
 

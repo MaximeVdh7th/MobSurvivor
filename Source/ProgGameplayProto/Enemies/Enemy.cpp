@@ -133,7 +133,7 @@ bool AEnemy::TryAttacking(const FVector& direction, float SquareLength)
 	return false;
 }
 
-void AEnemy::TakeDamage(AWeaponProjectile* HitActor)
+void AEnemy::TakeDamages(AWeaponProjectile* HitActor)
 {
 	if (Health->HasShield)
 	{		
