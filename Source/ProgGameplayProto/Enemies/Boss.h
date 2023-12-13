@@ -30,15 +30,17 @@ public:
 		UCapsuleComponent* Collision;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		USceneComponent* PivotPoint;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UHealth* Health;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UEnemyDropperComponent* Dropper;
 
-	UPROPERTY(Category = EnemyParameters, EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float MoveSpeed;
 
-	UPROPERTY(Category = EnemyParameters, EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float RotationRate;
 
 protected:
@@ -61,46 +63,73 @@ protected:
 	float DashSpeed = 10;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float DashDistance = 600;
+	float DashDistanceTarget;
 	float DashCooldown = 6;
 	float DashCooldownCounter = 6;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float DashDamage = 8;
 	float DashDistanceTimer;
-	float DashDistanceTarget;
 	FVector LastPlayerDir;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool IsDashing = false;
 #pragma endregion
 
 #pragma region Spin
-	float SpinTriggerDistance = 4;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpinTriggerDistance = 300;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float SpinDamage = 0.5;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpinPushOnPlayer = 80000;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float SpinDuration = 4;
-	float SpinCooldown = 16;
+	float SpinTimer;
+	float SpinCooldown = 8;
+	float SpinCooldownCounter = 8;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpinSpeed = 600;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpinRotationZ;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpinRotationSpeed = 5;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float SpinRadius = 100;
+	float SpinTime;
+
 	bool IsSpinning;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpinColliderToggle();
 #pragma endregion
 
 #pragma region Melee
 	float MeleeDistance = 2;
 	float MeleeDamage = 0.5;
+	float MeleeCooldown = 2;
+	float MeleeCooldownCounter;
 	UPROPERTY(BlueprintReadOnly)
 	bool IsMelee;
 #pragma endregion
 
 
 #pragma region Zone
-	float ZoneTriggerDistance = 10;	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float ZoneTriggerDistance = 600;	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float ZoneDistance = 200;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float SpawnZoneDuration = 1;
+	float SpawnZoneDuration = 0.3;
 	float ZoneTimer;
+	float ZoneCooldown = 6;
+	float ZoneCooldownCounter = 6;
 	int ZoneSpawned;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	int NumberOfZone = 1;
+	int NumberOfZone = 10;
 	bool IsInvokingZone;
 #pragma endregion
 
+
+	bool IsDoingSomething;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

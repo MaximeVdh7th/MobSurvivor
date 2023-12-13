@@ -6,6 +6,7 @@
 #include "BossDamageZone.h"
 #include "EnemiesHealthBar.h"
 #include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "ProgGameplayProto/GameUtils.h"
 #include "ProgGameplayProto/Health.h"
 #include "ProgGameplayProto/ProgGameplayProtoCharacter.h"
@@ -25,6 +26,9 @@ ABoss::ABoss()
 	Dropper = CreateDefaultSubobject<UEnemyDropperComponent>("Dropper");
 	Dropper->SetupAttachment(Collision);
 
+	PivotPoint = CreateDefaultSubobject<USceneComponent>("PivotPoint");
+	PivotPoint->SetupAttachment(Collision);
+
 	//barre de vie
 	HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthBar"));
 	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
@@ -38,10 +42,28 @@ void ABoss::Damage(AActor* Target)
 
 	if (!IsValid(targetHealth)) return;
 
-	if (IsDashing) 
+	if (IsDashing)
 	{
 		targetHealth->HitByAttack(DashDamage, this);
 		IsDashing = false;
+		IsDoingSomething = false;
+
+
+		//Decide it would be fun to throw the player around
+		FVector Dir = GetActorLocation() - Target->GetActorLocation(); Dir.Normalize();
+		FVector Movement = Target->GetComponentByClass<UCharacterMovementComponent>()->GetLastUpdateVelocity(); Movement.Normalize();
+		FVector Rnd = FVector(FMath::RandRange(0.0f, 1.0f), FMath::RandRange(0.0f, 1.0f), 0); Rnd.Normalize();
+
+		Dir = FVector::CrossProduct(Dir, (Movement + Rnd) * 0.5f);
+		Target->GetComponentByClass<UCharacterMovementComponent>()->AddImpulse(Dir * SpinPushOnPlayer);
+	}
+	if(IsSpinning)
+	{
+		targetHealth->HitByAttack(SpinDamage, this);
+
+		//Decide it would be fun to throw the player around
+		FVector Dir = GetActorLocation() - Target->GetActorLocation(); Dir.Normalize();
+		Target->GetComponentByClass<UCharacterMovementComponent>()->AddImpulse(Dir * SpinPushOnPlayer);
 	}
 }
 
@@ -68,21 +90,37 @@ void ABoss::Tick(float DeltaTime)
 	FVector direction = player->GetActorLocation() - GetActorLocation();
 	direction.Z = 0;
 
+	//Check which attack to do
 	float dist = direction.Length();
-
-	if (!IsInvokingZone && dist > ZoneTriggerDistance)
+	if(!IsSpinning && SpinCooldownCounter >= SpinCooldown && dist <= SpinTriggerDistance && !IsDoingSomething)
+	{
+		IsSpinning = true;
+		IsDoingSomething = true;
+		SpinColliderToggle();
+		SpinTimer = 0;
+		SpinTime = 0;
+	}
+	else if (!IsInvokingZone && ZoneCooldownCounter >= ZoneCooldown && dist <= ZoneTriggerDistance && !IsDoingSomething)
 	{
 		IsInvokingZone = true;
+		IsDoingSomething = true;
 		ZoneSpawned = 0;
 		ZoneTimer = 0;
 	}
-	else if(!IsDashing && DashCooldownCounter >= DashCooldown)
+	else if(!IsDashing && DashCooldownCounter >= DashCooldown && !IsDoingSomething)
 	{
 		IsDashing = true;
+		IsDoingSomething = true;
 		DashDistanceTimer = 0;
 		DashDistanceTarget = dist + DashDistance;
 		LastPlayerDir = direction;
 		LastPlayerDir.Normalize();
+
+		//Rotate toward player
+		float Tangent = atan2(LastPlayerDir.Y, LastPlayerDir.X) / PI * 180;//Tangent = Opposite / adjascent == Y / X => Rad to Degree
+		FRotator Rot = FRotator(0, Tangent, 0);
+		FQuat QuatRotation = FQuat(Rot);
+		SetActorRotation(QuatRotation);
 	}
 	
 	Counters(DeltaTime);
@@ -93,16 +131,20 @@ void ABoss::Tick(float DeltaTime)
 
 void ABoss::Counters(float& DeltaTime)
 {
+	SpinCooldownCounter += DeltaTime;
+	ZoneCooldownCounter += DeltaTime;
 	DashCooldownCounter += DeltaTime;
-	if(IsDashing)
+
+	if(IsSpinning)
 	{
-		DashDistanceTimer += DashSpeed * DeltaTime;
-		if(DashDistanceTimer >= DashDistanceTarget)
+		SpinTimer += DeltaTime;
+		if (SpinTimer >= SpinDuration)
 		{
-			DashCooldownCounter = 0;
-			IsDashing = false;
-			return;
-		}		
+			SpinCooldownCounter = 0;
+			IsSpinning = false;
+			IsDoingSomething = false;
+			SpinColliderToggle();
+		}
 	}
 	else if (IsInvokingZone)
 	{
@@ -114,12 +156,26 @@ void ABoss::Counters(float& DeltaTime)
 			const AProgGameplayProtoCharacter* player = UGameUtils::GetMainCharacter();
 
 			if (!IsValid(player)) return;
-			FVector RndDir = FVector(FMath::RandRange(0, 1), FMath::RandRange(0, 1), 0); RndDir.Normalize();
-			RndDir *= FMath::RandRange(ZoneDistance, ZoneDistance * 2);
+			FVector RndDir = FVector(FMath::RandRange(-ZoneDistance, ZoneDistance), FMath::RandRange(-ZoneDistance, ZoneDistance), 0);
 
 			SpawnDamageZone(player->GetActorLocation() + RndDir);
-			if (ZoneSpawned >= NumberOfZone)	IsInvokingZone = false;
+			if (ZoneSpawned >= NumberOfZone)
+			{
+				IsInvokingZone = false;
+				IsDoingSomething = false;
+				ZoneCooldownCounter = 0;
+			}	
 		}
+	}
+	else if(IsDashing)
+	{
+		DashDistanceTimer += DashSpeed * DeltaTime;
+		if(DashDistanceTimer >= DashDistanceTarget)
+		{
+			DashCooldownCounter = 0;
+			IsDashing = false;
+			IsDoingSomething = false;
+		}		
 	}
 }
 
@@ -128,16 +184,22 @@ void ABoss::MoveTowardPlayer(float& DeltaTime, FVector& direction)
 	float SquareLength = direction.SquaredLength();
 	direction.Normalize();
 
-	if(IsDashing)
+	FVector movement = direction * MoveSpeed * DeltaTime;
+	if(IsSpinning)
 	{
-		const FVector movement = LastPlayerDir * DashSpeed * DeltaTime;
+		SpinTime += DeltaTime * SpinRotationSpeed;
+		float Percent = 1 - (SpinTimer / SpinDuration);
+		PivotPoint->SetRelativeLocation(FVector(FMath::Cos(SpinTime), FMath::Sin(SpinTime), 0) * SpinRadius * Percent);
+		PivotPoint->AddWorldRotation(FRotator::MakeFromEuler(FVector(0, 0, SpinRotationZ * DeltaTime)));
+		movement = direction * SpinSpeed * DeltaTime;
+	}
+	else if(IsDashing)
+	{
+		movement = LastPlayerDir * DashSpeed * DeltaTime;
 		AddActorWorldOffset(movement);
 		return;
 	}
-
-	FVector movement = direction * MoveSpeed * DeltaTime;
 	AddActorWorldOffset(movement);
-
 
 	//Custom Rotation towards the player
 	float Tangent = atan2(direction.Y, direction.X) / PI * 180;//Tangent = Opposite / adjascent == Y / X => Rad to Degree
