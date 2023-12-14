@@ -6,10 +6,12 @@
 #include "GameFramework/Info.h"
 #include "EnemySpawnerManager.generated.h"
 
+class ABoss;
 class AEnemy;
 class AProgGameplayProtoGameMode;
 struct FPunctualEnemySpawnRule;
 struct FRangeEnemySpawnRule;
+struct FSpawnBossRule;
 /**
  *
  */
@@ -29,6 +31,9 @@ protected:
 	TArray<FPunctualEnemySpawnRule> PunctualEnemySpawnRules;
 
 	UPROPERTY()
+	TArray<FSpawnBossRule> PunctualBossSpawnRules;
+
+	UPROPERTY()
 	TArray<FRangeEnemySpawnRule> RangeEnemySpawnRules;
 
 
@@ -44,6 +49,8 @@ protected:
 
 	// returns true if should remove rule after evaluation
 	virtual bool EvaluatePunctualRule(FPunctualEnemySpawnRule Rule);
+	//Boss
+	virtual bool EvaluatePunctualRule(FSpawnBossRule Rule);
 
 	virtual void EvaluateRangeRules(float DeltaTime);
 
@@ -51,6 +58,9 @@ protected:
 	virtual bool EvaluateRangeRule(float DeltaTime, FRangeEnemySpawnRule& Rule);
 
 	virtual void SpawnEnemy(TSubclassOf<AEnemy> EnemyClass);
+
+	//Boss
+	virtual void SpawnEnemy(TSubclassOf<ABoss> BossClass);
 
 	virtual FVector GetSpawnLocation();
 

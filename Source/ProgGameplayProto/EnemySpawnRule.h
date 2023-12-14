@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "Curves/CurveVector.h"
 #include "Enemies/Enemy.h"
+#include "Enemies/Boss.h"
 #include "Iris/Core/IrisProfiler.h"
 #include "EnemySpawnRule.generated.h"
 
@@ -20,6 +21,22 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AEnemy> Enemy;
+};
+
+USTRUCT()
+struct FSpawnBossRule
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+		float Time = 0;
+
+	UPROPERTY(EditAnywhere)
+		int32 Number = 0;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<ABoss> Boss;
 };
 
 USTRUCT()
@@ -50,7 +67,6 @@ class PROGGAMEPLAYPROTO_API AEnemySpawnRule : public AInfo
 public:
 	
 	void ChangeSpawnRule(FPunctualEnemySpawnRule);
-	
 };
 
 

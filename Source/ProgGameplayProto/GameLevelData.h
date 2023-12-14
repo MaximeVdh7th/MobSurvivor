@@ -23,6 +23,9 @@ public:
 	TArray<FPunctualEnemySpawnRule> PunctualSpawnRules;
 
 	UPROPERTY(EditAnywhere)
+	TArray<FSpawnBossRule> PunctualBossSpawnRules;
+
+	UPROPERTY(EditAnywhere)
 	TArray<FRangeEnemySpawnRule> RangeSpawnRules;
 
 	UPROPERTY(EditAnywhere)
