@@ -30,8 +30,8 @@ ABoss::ABoss()
 	PivotPoint->SetupAttachment(Collision);
 
 	//barre de vie
-	HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthBar"));
-	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	//HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	//HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthBar"));
 }
 
 void ABoss::Damage(AActor* Target)
@@ -72,9 +72,10 @@ void ABoss::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Health->OnBeforeHealthDie.AddDynamic(this, &ABoss::DieVFX);
 	Health->OnHealthDie.AddDynamic(this, &ABoss::Die);
 
-	UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
+	//UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
 	//EnemiesHealthBar->SetOwnerEnemy(this);	
 }
 
@@ -221,7 +222,6 @@ void ABoss::TakeDamages(AWeaponProjectile* HitActor)
 
 void ABoss::Die()
 {
-	DieVFX();
 	Destroy();
 }
 

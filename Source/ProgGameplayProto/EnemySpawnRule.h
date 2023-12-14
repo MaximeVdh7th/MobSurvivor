@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Curves/CurveVector.h"
 #include "Enemies/Enemy.h"
 #include "Iris/Core/IrisProfiler.h"
 #include "EnemySpawnRule.generated.h"
@@ -36,6 +37,9 @@ public:
 
 	UPROPERTY()
 	float NumberOfEnemyToSpawn = 0;
+
+	UPROPERTY(EditAnywhere)
+	FRuntimeVectorCurve EnemyRoleLuckCurve;
 };
 
 UCLASS()

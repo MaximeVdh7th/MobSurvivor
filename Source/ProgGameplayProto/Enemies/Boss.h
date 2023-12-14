@@ -43,6 +43,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float RotationRate;
 
+	UFUNCTION()
 	virtual void Die();
 protected:
 	// Called when the game starts or when spawned
@@ -53,8 +54,8 @@ protected:
 	void MoveTowardPlayer(float& DeltaTime, FVector& direction);
 
 
-	UPROPERTY(VisibleAnywhere)
-		class UWidgetComponent* HealthWidgetComp;
+	//UPROPERTY(VisibleAnywhere)
+	//	class UWidgetComponent* HealthWidgetComp;
 
 #pragma region Dash
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)

@@ -123,7 +123,25 @@ void AEnemySpawnerManager::SpawnEnemy(TSubclassOf<AEnemy> EnemyClass)
 	const FVector spawnLocation = GetSpawnLocation();
 	//GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
 	AEnemy* localEnemy = GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
+
 	//localEnemy->role
+	float RndRole = FMath::RandRange(0.0f,1.0f);
+	AProgGameplayProtoGameState* gameState = GameMode->GetGameState<AProgGameplayProtoGameState>();
+	FVector roleLuck = RangeEnemySpawnRules[0].EnemyRoleLuckCurve.GetValue(gameState->GetGameTime());
+
+	if(RndRole < roleLuck.X)
+	{
+		localEnemy->RoleShooter();		
+	}
+	if (RndRole < roleLuck.X + roleLuck.Y)
+	{
+		localEnemy->RoleHealer();
+	}
+	if (RndRole < roleLuck.X + roleLuck.Y + roleLuck.Z)
+	{
+		localEnemy->RoleProtection();
+	}
+
 }
 
 FVector AEnemySpawnerManager::GetSpawnLocation()
@@ -139,14 +157,4 @@ FVector AEnemySpawnerManager::GetSpawnLocation()
 	FVector output = mainCharacter->GetActorLocation() + offset;
 
 	return output;
-}
-
-void AEnemySpawnerManager::GetWave(int WaveIndex)
-{
-	
-}
-
-void AEnemySpawnerManager::WaveEndCondition(float TimeElapsed, int EnemiesRemaining)
-{
-	
 }
