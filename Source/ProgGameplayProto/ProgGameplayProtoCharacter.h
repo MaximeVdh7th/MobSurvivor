@@ -60,6 +60,9 @@ class AProgGameplayProtoCharacter : public ACharacter
 public:
 	AProgGameplayProtoCharacter();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayerDie();
+
 	static AProgGameplayProtoCharacter* Instance;
 	UPROPERTY(BlueprintReadOnly)
 	float Damage_Amount;

@@ -13,6 +13,8 @@ void UMySaveGame::CombineStruct(FUpgradeValueStruct Bonuses, TArray<int> LevelBy
 	UGameUtils::GoldLuck		= Bonuses.GoldLuck;
 	UGameUtils::GoldMultiplier	= Bonuses.GoldMultiplier;
 	UGameUtils::XPLuck			= Bonuses.XPLuck;
+	FString TheFloatStr = FString::SanitizeFloat(Bonuses.XPLuck);
+	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, *TheFloatStr);
 	UGameUtils::XPMultiplier	= Bonuses.XPMultiplier;
 
 }
@@ -20,7 +22,33 @@ void UMySaveGame::CombineStruct(FUpgradeValueStruct Bonuses, TArray<int> LevelBy
 FUpgradeValueStruct UMySaveGame::CombineBonuses(TArray<FUpgradeValueStruct> Bonuses)
 {
 	FUpgradeValueStruct incrementalStruct;
+#pragma region Initialize
+	incrementalStruct.HPMax 				 = 0;
+	incrementalStruct.HPRegen 				 = 0;
+	incrementalStruct.CollectionDistance 	 = 0;
+	incrementalStruct.GoldLuck 				 = 0;
+	incrementalStruct.GoldMultiplier 		 = 0;
+	incrementalStruct.XPLuck 				 = 0;
+	incrementalStruct.XPMultiplier 			 = 0;
+	incrementalStruct.HPLuck 				 = 0;
+	incrementalStruct.InvicibilityTime 		 = 0;
 
+
+	incrementalStruct.DashDistance 			 = 0;
+	incrementalStruct.DashCooldown 			 = 0;
+
+
+	incrementalStruct.ShieldCooldown 		 = 0;
+	incrementalStruct.ShieldAbsortion		 = 0;
+
+
+	incrementalStruct.BombCooldown  		 = 0;
+	incrementalStruct.BombRadiusDamage		 = 0;
+	incrementalStruct.BombDamage 			 = 0;
+
+
+	incrementalStruct.BombNotSelfDamage = false;
+#pragma endregion
 	for (size_t i = 0; i < Bonuses.Num(); i++)
 	{
 		incrementalStruct.HPMax					+= Bonuses[i].HPMax;

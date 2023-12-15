@@ -77,6 +77,7 @@ AProgGameplayProtoCharacter::AProgGameplayProtoCharacter()
 	DropsCollector->SetupAttachment(GetCapsuleComponent());
 }
 
+
 bool AProgGameplayProtoCharacter::WantsToShoot()
 {
 	return bIsHoldingShoot || bIsAutoFire;
@@ -113,6 +114,9 @@ void AProgGameplayProtoCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+
+	Health->OnHealthDie.AddDynamic(this, &AProgGameplayProtoCharacter::PlayerDie);
+
 	SetupSaveUpgrade();
 
 	RegisterInstance();
