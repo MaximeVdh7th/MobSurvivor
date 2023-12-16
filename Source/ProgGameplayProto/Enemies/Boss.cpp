@@ -7,6 +7,7 @@
 #include "EnemiesHealthBar.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "ProgGameplayProto/EnemySpawnerManager.h"
 #include "ProgGameplayProto/GameUtils.h"
 #include "ProgGameplayProto/Health.h"
 #include "ProgGameplayProto/ProgGameplayProtoCharacter.h"
@@ -72,8 +73,12 @@ void ABoss::BeginPlay()
 {
 	Super::BeginPlay();
 
+	//Enemy counter
+	AEnemySpawnerManager::EnemyCount += 1;
+
 	Health->OnBeforeHealthDie.AddDynamic(this, &ABoss::DieVFX);
 	Health->OnHealthDie.AddDynamic(this, &ABoss::Die);
+
 
 	//UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
 	//EnemiesHealthBar->SetOwnerEnemy(this);	
@@ -222,6 +227,7 @@ void ABoss::TakeDamages(AWeaponProjectile* HitActor)
 
 void ABoss::Die()
 {
+	AEnemySpawnerManager::EnemyCount -= 1;
 	Destroy();
 }
 

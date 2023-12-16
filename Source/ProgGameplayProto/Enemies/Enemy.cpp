@@ -5,6 +5,7 @@
 
 #include "EnemiesHealthBar.h"
 #include "Components/CapsuleComponent.h"
+#include "ProgGameplayProto/EnemySpawnerManager.h"
 #include "ProgGameplayProto/GameUtils.h"
 #include "ProgGameplayProto/Health.h"
 #include "ProgGameplayProto/ProgGameplayProtoCharacter.h"
@@ -38,6 +39,8 @@ void AEnemy::BeginPlay()
 
 	UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
 	EnemiesHealthBar->SetOwnerEnemy(this);
+
+	AEnemySpawnerManager::EnemyCount += 1;
 }
 
 void AEnemy::ShooterOffset() 
@@ -153,6 +156,7 @@ void AEnemy::TakeDamages(AWeaponProjectile* HitActor)
 
 void AEnemy::Die()
 {	
+	AEnemySpawnerManager::EnemyCount -= 1;
 	if (IsProtecting && ProtectedBean != nullptr && IsValid(ProtectedBean))
 	{
 		ProtectedBean->StopProtection();

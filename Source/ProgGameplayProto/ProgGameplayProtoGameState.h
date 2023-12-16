@@ -22,6 +22,7 @@ public:
 
 protected:
 	float GameTime = 0;
+	UPROPERTY(BlueprintReadWrite)
 	int LocalGameGold = 0;
 	bool bHasGameStarted = false;
 
@@ -39,6 +40,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void ShowEndScreen(bool DidYouWin, int GoldEarned);
+
 
 private:
 	/*

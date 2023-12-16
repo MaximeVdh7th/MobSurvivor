@@ -10,14 +10,13 @@
 #include "GameUtils.h"
 #include "ProgGameplayProtoCharacter.h"
 #include "ProgGameplayProtoGameMode.h"
-#include "ProgGameplayProtoGameState.h"
 #include "Kismet/GameplayStatics.h"
 
 AEnemySpawnerManager::AEnemySpawnerManager()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	enemyCount = 0;
+	EnemyCount = 0;
 }
 
 void AEnemySpawnerManager::Tick(float DeltaSeconds)
@@ -27,6 +26,14 @@ void AEnemySpawnerManager::Tick(float DeltaSeconds)
 	EvaluatePunctualRules();
 
 	EvaluateRangeRules(DeltaSeconds);
+
+	if (gameState->GetGameTime() > 601 && !GameEnded && EnemyCount <= 0)
+	{
+		GameEnded = true;
+		//AProgGameplayProtoGameState* GameInstance = Cast<AProgGameplayProtoGameState>(UWorld::GetGameInstance());
+		gameState->EndGame(true);
+	}
+	ShowEnemyCount = EnemyCount;
 }
 
 void AEnemySpawnerManager::BeginPlay()
@@ -34,6 +41,8 @@ void AEnemySpawnerManager::BeginPlay()
 	Super::BeginPlay();
 
 	LoadSpawnRules();
+
+	gameState = GameMode->GetGameState<AProgGameplayProtoGameState>();
 }
 
 void AEnemySpawnerManager::LoadSpawnRules()
@@ -71,8 +80,6 @@ void AEnemySpawnerManager::EvaluatePunctualRules()
 
 bool AEnemySpawnerManager::EvaluatePunctualRule(FPunctualEnemySpawnRule Rule)
 {
-	AProgGameplayProtoGameState* gameState = GameMode->GetGameState<AProgGameplayProtoGameState>();
-
 	if (gameState->GetGameTime() >= Rule.Time)
 	{
 		for (int32 i = 0; i < Rule.Number; i++)
@@ -88,8 +95,6 @@ bool AEnemySpawnerManager::EvaluatePunctualRule(FPunctualEnemySpawnRule Rule)
 
 bool AEnemySpawnerManager::EvaluatePunctualRule(FSpawnBossRule Rule)
 {
-	AProgGameplayProtoGameState* gameState = GameMode->GetGameState<AProgGameplayProtoGameState>();
-
 	if (gameState->GetGameTime() >= Rule.Time)
 	{
 		for (int32 i = 0; i < Rule.Number; i++)
@@ -104,8 +109,7 @@ bool AEnemySpawnerManager::EvaluatePunctualRule(FSpawnBossRule Rule)
 
 void AEnemySpawnerManager::SpawnEnemy(TSubclassOf<ABoss> EnemyClass) 
 {
-	enemyCount += 1;
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), enemyCount));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), enemyCount));
 	const FVector spawnLocation = GetSpawnLocation();
 	ABoss* localEnemy = GetWorld()->SpawnActor<ABoss>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
 }
@@ -123,8 +127,6 @@ void AEnemySpawnerManager::EvaluateRangeRules(float DeltaTime)
 
 bool AEnemySpawnerManager::EvaluateRangeRule(float DeltaTime, FRangeEnemySpawnRule& Rule)
 {
-	AProgGameplayProtoGameState* gameState = GameMode->GetGameState<AProgGameplayProtoGameState>();
-
 	float minTime = 0;
 	float maxTime = 0;
 	Rule.SpawnCurve.GetRichCurve()->GetTimeRange(minTime, maxTime);
@@ -150,9 +152,8 @@ bool AEnemySpawnerManager::EvaluateRangeRule(float DeltaTime, FRangeEnemySpawnRu
 
 void AEnemySpawnerManager::SpawnEnemy(TSubclassOf<AEnemy> EnemyClass)
 {
-	enemyCount += 1;
 	//std::cout << char(enemyCount);
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), enemyCount));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), enemyCount));
 	const FVector spawnLocation = GetSpawnLocation();
 	//GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
 	AEnemy* localEnemy = GetWorld()->SpawnActor<AEnemy>(EnemyClass, spawnLocation, FRotator::ZeroRotator);
@@ -167,7 +168,6 @@ void AEnemySpawnerManager::SpawnEnemy(TSubclassOf<AEnemy> EnemyClass)
 
 	//localEnemy->role
 	float RndRole = FMath::RandRange(0.0f,1.0f);
-	AProgGameplayProtoGameState* gameState = GameMode->GetGameState<AProgGameplayProtoGameState>();
 	FVector roleLuck = RangeEnemySpawnRules[0].EnemyRoleLuckCurve.GetValue(gameState->GetGameTime());
 
 

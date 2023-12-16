@@ -109,7 +109,7 @@ FUpgradeValueStruct UMySaveGame::ConvertUpdateToStruct(UPermanentBonusesData* Da
 	SaveStruct.BombRadiusDamage = GetBestIndex(Data->BombRadiusDamage,Index);
 	SaveStruct.BombDamage		= GetBestIndex(Data->BombDamage,Index);
 	
-	if(Data->BombNotSelfDamage.Num() >= Index && Data->BombNotSelfDamage.Num() != 0)
+	if(Data->BombNotSelfDamage.Num() > Index && Data->BombNotSelfDamage.Num() != 0)
 	{
 		SaveStruct.BombNotSelfDamage = Data->BombNotSelfDamage[Index];
 	}
@@ -128,7 +128,7 @@ float UMySaveGame::GetBestIndex(const TArray<float>& List, int32 Index)
 	{
 		bestValue = 0;
 	}	
-	else if(List.Num() >= Index)
+	else if(List.Num() > Index)
 	{
 		bestValue = List[Index];
 	}

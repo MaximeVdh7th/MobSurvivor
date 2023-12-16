@@ -24,8 +24,8 @@ public:
 
 	inline static float GoldLuck = 0.05;
 	inline static float GoldMultiplier = 1;
-	inline static float XPLuck = 0.02;
+	inline static float XPLuck = 0.05;
 	inline static float XPMultiplier = 1;
-	inline static float HPLuck = 0;
+	inline static float HPLuck = 0.01;
 	inline static float HPMultiplier = 1;
 };

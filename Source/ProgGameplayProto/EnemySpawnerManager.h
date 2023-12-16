@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Info.h"
+#include "ProgGameplayProtoGameState.h"
 #include "EnemySpawnerManager.generated.h"
 
 class ABoss;
@@ -22,6 +23,10 @@ class PROGGAMEPLAYPROTO_API AEnemySpawnerManager : public AInfo
 		
 public:
 	AEnemySpawnerManager();
+
+	inline static int EnemyCount;
+	UPROPERTY(BlueprintReadWrite)
+		int	ShowEnemyCount = EnemyCount;
 
 protected:
 	UPROPERTY()
@@ -64,7 +69,7 @@ protected:
 
 	virtual FVector GetSpawnLocation();
 
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	int32 enemyCount;
+private:
+	AProgGameplayProtoGameState* gameState;
+	bool GameEnded = false;
 };

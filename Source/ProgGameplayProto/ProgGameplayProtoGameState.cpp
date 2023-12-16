@@ -19,6 +19,7 @@ void AProgGameplayProtoGameState::Tick(float DeltaSeconds)
 	if (bHasGameStarted)
 		GameTime += DeltaSeconds;
 
+
 	GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Green, "Game Time: " + FString::SanitizeFloat(GameTime));
 }
 
@@ -36,6 +37,7 @@ void AProgGameplayProtoGameState::StartGame()
 
 void AProgGameplayProtoGameState::EndGame(bool GameWin)
 {
+	bHasGameStarted = false;
 	//Win/Lose screen
 	ShowEndScreen(GameWin, LocalGameGold);
 
