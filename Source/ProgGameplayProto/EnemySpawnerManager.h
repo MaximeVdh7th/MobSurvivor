@@ -28,6 +28,10 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		int	ShowEnemyCount = EnemyCount;
 
+	inline static int EnemiesKilledCount;
+	UPROPERTY(BlueprintReadWrite)
+		int ShowEnemiesKilledCount = EnemiesKilledCount;
+
 protected:
 	UPROPERTY()
 	AProgGameplayProtoGameMode* GameMode;

@@ -27,6 +27,9 @@ class PROGGAMEPLAYPROTO_API UMySaveGame : public USaveGame
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FUpgradeValueStruct UpgradeStrut;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int NumberOfEnemiesKilled;
+
 	UFUNCTION(BlueprintCallable)
 	//void CombineStruct(TArray<FUpgradeValueStruct>& Bonuses, TArray<int>& LevelByUpgrade);
 	UPARAM(DisplayName="CombineStruct") void CombineStruct(FUpgradeValueStruct Bonuses, TArray<int> LevelByUpgrade);

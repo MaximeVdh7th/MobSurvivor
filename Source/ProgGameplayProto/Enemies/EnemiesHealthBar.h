@@ -20,6 +20,8 @@ protected:
 
 	TWeakObjectPtr<AEnemy> OwnerEnemy;
 
+
+
 	UPROPERTY(meta = (BindWidget))
 	class UProgressBar* HealthBar;
 	UPROPERTY(meta = (BindWidget))

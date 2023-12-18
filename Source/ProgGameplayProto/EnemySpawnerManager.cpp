@@ -17,6 +17,7 @@ AEnemySpawnerManager::AEnemySpawnerManager()
 	PrimaryActorTick.bCanEverTick = true;
 
 	EnemyCount = 0;
+	EnemiesKilledCount = 0;
 }
 
 void AEnemySpawnerManager::Tick(float DeltaSeconds)
@@ -34,6 +35,7 @@ void AEnemySpawnerManager::Tick(float DeltaSeconds)
 		gameState->EndGame(true);
 	}
 	ShowEnemyCount = EnemyCount;
+	ShowEnemiesKilledCount = EnemiesKilledCount;
 }
 
 void AEnemySpawnerManager::BeginPlay()

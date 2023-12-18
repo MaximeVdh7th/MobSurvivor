@@ -162,6 +162,8 @@ void AEnemy::Die()
 	}
 	IsDead = true;
 	AEnemySpawnerManager::EnemyCount -= 1;
+	AEnemySpawnerManager::EnemiesKilledCount += 1;
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), AEnemySpawnerManager::EnemiesKilledCount));
 	if (IsProtecting && ProtectedBean != nullptr && IsValid(ProtectedBean))
 	{
 		ProtectedBean->StopProtection();

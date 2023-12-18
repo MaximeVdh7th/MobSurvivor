@@ -3,6 +3,9 @@
 
 #include "ProgGameplayProtoGameState.h"
 
+#include "EnemySpawnerManager.h"
+#include "WinHttp/Support/WinHttpConnectionHttp.h"
+#include "http.h"
 #include "MySaveGame.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -49,6 +52,11 @@ void AProgGameplayProtoGameState::EndGame(bool GameWin)
 		{
 			SaveGameInstance->UpgradeStrut = LoadedGame->UpgradeStrut;
 			SaveGameInstance->Gold = LoadedGame->Gold;
+			SaveGameInstance->NumberOfEnemiesKilled = LoadedGame->NumberOfEnemiesKilled;
+			LoadedGame->NumberOfEnemiesKilled = AEnemySpawnerManager::EnemiesKilledCount;
+			SaveGameInstance->NumberOfEnemiesKilled = LoadedGame->NumberOfEnemiesKilled;
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Green, FString::Printf(TEXT("%d"), AEnemySpawnerManager::EnemiesKilledCount));
+
 		}
 
 		SaveGameInstance->Gold += LocalGameGold;
