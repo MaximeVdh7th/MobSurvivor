@@ -155,7 +155,12 @@ void AEnemy::TakeDamages(AWeaponProjectile* HitActor)
 }
 
 void AEnemy::Die()
-{	
+{
+	if(IsDead)
+	{
+		return;
+	}
+	IsDead = true;
 	AEnemySpawnerManager::EnemyCount -= 1;
 	if (IsProtecting && ProtectedBean != nullptr && IsValid(ProtectedBean))
 	{

@@ -64,4 +64,5 @@ public:
 	FORCEINLINE void SetMaxHealth(float DefaultMax_Health, float time);
 
 	float GetDamage(AWeaponProjectile* DamageProjectile);
+
 };

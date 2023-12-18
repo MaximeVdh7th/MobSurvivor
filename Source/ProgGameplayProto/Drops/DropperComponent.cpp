@@ -45,7 +45,7 @@ AActor* UDropperComponent::SpawnWeightedDrop()
 			}
 		}
 		if (UKismetMathLibrary::ClassIsChildOf(Drops[i].ObjectToSpawn, AHealthDrop::StaticClass()))
-		{
+		{	
 			if (FMath::FRandRange(0.0f, 1.0f) < UGameUtils::HPLuck + Drops[i].DropRate)
 			{
 				FVector spawnLocation = GetRandomSpawnLocation();
@@ -56,8 +56,6 @@ AActor* UDropperComponent::SpawnWeightedDrop()
 		{
 			if (FMath::FRandRange(0.0f, 1.0f) < UGameUtils::XPLuck + Drops[i].DropRate)
 			{
-				FString TheFloatStr = FString::SanitizeFloat(UGameUtils::XPLuck);
-				GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, *TheFloatStr);
 				FVector spawnLocation = GetRandomSpawnLocation();
 				GetWorld()->SpawnActor<AActor>(Drops[i].ObjectToSpawn, spawnLocation, FRotator::ZeroRotator);
 			}

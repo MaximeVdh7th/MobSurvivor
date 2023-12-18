@@ -165,6 +165,8 @@ protected:
 	UFUNCTION()
 	virtual void Die();
 
+	bool IsDead;
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

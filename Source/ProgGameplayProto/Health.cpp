@@ -48,8 +48,11 @@ void UHealth::AddHealth(float Amount)
 
 	OnHealthChanged.Broadcast(CurrentHealth);
 
+
 	if (CurrentHealth <= 0)
-		Die();
+	{
+		Die();		
+	}
 }
 
 void UHealth::Die()

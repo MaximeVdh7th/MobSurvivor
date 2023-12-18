@@ -13,9 +13,12 @@ void UMySaveGame::CombineStruct(FUpgradeValueStruct Bonuses, TArray<int> LevelBy
 	UGameUtils::GoldLuck		= Bonuses.GoldLuck;
 	UGameUtils::GoldMultiplier	= Bonuses.GoldMultiplier;
 	UGameUtils::XPLuck			= Bonuses.XPLuck;
-	FString TheFloatStr = FString::SanitizeFloat(Bonuses.XPLuck);
-	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, *TheFloatStr);
+	//FString TheFloatStr = FString::SanitizeFloat(UGameUtils::GoldLuck);
+	//GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, *TheFloatStr);
 	UGameUtils::XPMultiplier	= Bonuses.XPMultiplier;
+
+	UGameUtils::HPLuck	= Bonuses.HPLuck;
+	UGameUtils::HPMultiplier	= Bonuses.HPRegen;
 
 }
 // From all bonuses 

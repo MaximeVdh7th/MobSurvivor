@@ -20,7 +20,7 @@ void AProgGameplayProtoGameState::Tick(float DeltaSeconds)
 		GameTime += DeltaSeconds;
 
 
-	GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Green, "Game Time: " + FString::SanitizeFloat(GameTime));
+	//GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Green, "Game Time: " + FString::SanitizeFloat(GameTime));
 }
 
 void AProgGameplayProtoGameState::StartGame()
@@ -65,8 +65,8 @@ void AProgGameplayProtoGameState::AddGold(int GoldAmount)
 {
 	LocalGameGold += GoldAmount;
 
-	FString ok = FString::SanitizeFloat(LocalGameGold);
-	GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, ok);
+	//FString ok = FString::SanitizeFloat(LocalGameGold);
+	//GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, ok);
 }
 /*
 void AProgGameplayProtoGameState::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bConnectedSuccessfully)

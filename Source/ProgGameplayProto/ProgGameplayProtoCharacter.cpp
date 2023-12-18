@@ -11,6 +11,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "ExperienceComponent.h"
+#include "GameUtils.h"
 #include "Health.h"
 #include "InputActionValue.h"
 #include "Bonuses/BonusData.h"
@@ -98,12 +99,18 @@ void AProgGameplayProtoCharacter::SetupSaveUpgrade()
 {
 	if (UMySaveGame* LoadedGame = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot("Default", 0)))
 	{
+		//UGameUtils::GoldLuck		= LoadedGame->UpgradeStrut.GoldLuck;
+		//UGameUtils::GoldMultiplier	= LoadedGame->UpgradeStrut.GoldMultiplier;
+		//UGameUtils::XPLuck			= LoadedGame->UpgradeStrut.XPLuck;
+		//UGameUtils::XPMultiplier	= LoadedGame->UpgradeStrut.XPMultiplier;
+
+
 		Health->CurrentHealth	+= LoadedGame->UpgradeStrut.HPMax;
 		Health->MaxHealth		+=  LoadedGame->UpgradeStrut.HPMax;
 
 		Damage_Amount += LoadedGame->UpgradeStrut.BombDamage;
 
-		DropsCollector->SetBoundsScale(LoadedGame->UpgradeStrut.CollectionDistance);
+		DropsCollector->SetRelativeScale3D(FVector::OneVector *  LoadedGame->UpgradeStrut.CollectionDistance * 4 /*4 is the Initial size*/);
 		InvincibilityTime = LoadedGame->UpgradeStrut.InvicibilityTime;
 
 		//UE_LOG(LogTemp, Warning, TEXT("LOADED: %s"), *LoadedGame->PlayerName);

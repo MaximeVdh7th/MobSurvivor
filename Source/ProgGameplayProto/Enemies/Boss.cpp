@@ -50,7 +50,7 @@ void ABoss::Damage(AActor* Target)
 		IsDoingSomething = false;
 
 
-		//Decide it would be fun to throw the player around
+		//Decided it would be fun to throw the player around
 		FVector Dir = GetActorLocation() - Target->GetActorLocation(); Dir.Normalize();
 		FVector Movement = Target->GetComponentByClass<UCharacterMovementComponent>()->GetLastUpdateVelocity(); Movement.Normalize();
 		FVector Rnd = FVector(FMath::RandRange(0.0f, 1.0f), FMath::RandRange(0.0f, 1.0f), 0); Rnd.Normalize();
@@ -227,6 +227,11 @@ void ABoss::TakeDamages(AWeaponProjectile* HitActor)
 
 void ABoss::Die()
 {
+	if(IsDead)
+	{
+		return;
+	}
+	IsDead = true;
 	AEnemySpawnerManager::EnemyCount -= 1;
 	Destroy();
 }
