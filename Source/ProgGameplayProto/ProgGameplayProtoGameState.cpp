@@ -41,8 +41,7 @@ void AProgGameplayProtoGameState::StartGame()
 void AProgGameplayProtoGameState::EndGame(bool GameWin)
 {
 	bHasGameStarted = false;
-	//Win/Lose screen
-	ShowEndScreen(GameWin, LocalGameGold);
+
 
 
 	if (UMySaveGame* SaveGameInstance = Cast<UMySaveGame>(UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass())))
@@ -66,6 +65,11 @@ void AProgGameplayProtoGameState::EndGame(bool GameWin)
 		{
 			// Save succeeded.
 		}
+
+		//Win/Lose screen
+		ShowEndScreen(GameWin, LocalGameGold);
+
+
 	}
 }
 
