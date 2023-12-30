@@ -66,10 +66,15 @@ void UHTTPWidget::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr R
 {
 
 	TSharedPtr<FJsonObject> ResponseObj;
+	bool responsevalidity = ResponseObj.IsValid();
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("%d"), responsevalidity));
 	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
 	FJsonSerializer::Deserialize(Reader, ResponseObj);
+	ResponseBody = *Response->GetContentAsString();
+	SetResponseBody(ResponseBody);
 
-	//UE_LOG(LogTemp, Display, TEXT("Response %s"), *Response->GetContentAsString());
+	UE_LOG(LogTemp, Display, TEXT("Response %s"), *Response->GetContentAsString());
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(TEXT("%s"), *ResponseBody));
 	//UE_LOG(LogTemp, Display, TEXT("Title: %s"), *ResponseObj->GetStringField("title"));
 
 }
@@ -92,6 +97,38 @@ void UHTTPWidget::HandleScoreRequests(FString Tok, FString EnemiesKilled)
 	Request->ProcessRequest();
 }
 
+
+
+void UHTTPWidget::DisplayScoreBoard()
+{
+	/*
+	FHttpRequestRef Request = FHttpModule::Get().CreateRequest();
+	Request->OnProcessRequestComplete().BindUObject(this, &UHTTPWidget::OnResponseReceived);
+	Request->SetURL("http://localhost:3000/TopPlayers");
+	Request->SetVerb("GET");
+	Request->ProcessRequest();
+	
+	FString MyResponse =  Request->GetResponse()->GetContentAsString();
+	return MyResponse;
+	*/
+
+	FHttpRequestRef Request = FHttpModule::Get().CreateRequest();
+	TSharedRef<FJsonObject> RequestObj = MakeShared<FJsonObject>();
+	FString RequestBody;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
+	FJsonSerializer::Serialize(RequestObj, Writer);
+	Request->OnProcessRequestComplete().BindUObject(this, &UHTTPWidget::OnResponseReceived);
+	Request->SetURL("http://localhost:3000/TopPlayers");
+	Request->SetVerb("POST");
+	Request->SetHeader("Content-Type", "application/json");
+	Request->SetContentAsString(RequestBody);
+	Request->ProcessRequest();
+	
+
+
+}
+
+
 FString UHTTPWidget::GenerateToken()
 {
 	std::string str("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -107,6 +144,21 @@ FString UHTTPWidget::GenerateToken()
 	FString Tok = StringToken.c_str();
 	return Tok;
 }
+
+FString UHTTPWidget::GetResponseBody()
+{
+	return ResponseBody;
+}
+
+void UHTTPWidget::SetResponseBody(FString Response)
+{
+	ResponseBody = Response;
+}
+
+
+
+
+
 
 
 

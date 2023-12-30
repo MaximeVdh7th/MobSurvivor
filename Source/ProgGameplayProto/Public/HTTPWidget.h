@@ -40,13 +40,27 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void HandleScoreRequests(FString Tok, FString EnemiesKilled);
 
+	UFUNCTION(BlueprintCallable)
+	void DisplayScoreBoard();
+
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FString Token;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int Score;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FString ResponseBody;
+
 	UFUNCTION(BlueprintCallable)
 	FString GenerateToken();
+
+	UFUNCTION(BlueprintCallable)
+
+	FString GetResponseBody();
+
+	UFUNCTION(BlueprintCallable)
+	void SetResponseBody(FString Response);
+
 	
 
 private:
