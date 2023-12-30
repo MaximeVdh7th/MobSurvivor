@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+ 
+ <div class="Container">
+	<div class="col-12">
+		Register User
+		Email:
+		<input type="text" id="email" class="form_control" value = "Test@dhjsk.fo">
+		Password
+		<input type="password" id="password" class="form_control" value = "132">
+		Confirm Pasword
+		<input type="password" id="password_confirm" class="form_control" value = "132">
+		<button class="btn btn-primary" onclick="register();"; >Register</button>
+	</div>
+ </div>
+ 
+<script>
+	function register()
+	{
+		console.log('register start');
+		let email				= document.getElementById('email').value;
+		let password			= document.getElementById('password').value;
+		let passwordConfirm	= document.getElementById('password_confirm').value;
+
+		// Email Check
+		if(!emailRegex.test(email))
+		{
+			alert('email not valid');
+			return;
+		}
+		else if(password != passwordConfirm)
+		{
+			alert('passwords not valid');
+			return;
+		}
+
+		let localUser = 
+		{
+			"email" : email,
+			"password" : password
+		};
+
+		fetch('/post', {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			//body: JSON.stringify(localUser),
+			body: JSON.stringify({
+				email:email,
+				password: password
+			}),
+		})
+		.then(response => response.json())
+		.then(result => console.log(result))
+		//.then(data => {console.log(data.success);});
+	}
+
+	const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "i");
+
+</script>
+</body>
+</html>

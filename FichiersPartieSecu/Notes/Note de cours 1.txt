@@ -1,0 +1,42 @@
+
+application lourde = se joue côté utilisateur
+application non-lourde = se joue côté serveur 
+Obfuscation = code illisible
+anti-obfuscation = rend le code lisible
+
+------------------------
+SETUP
+------------------------
+
+installer nodeJs LTS 18
+
+lancer depuis windows click droit ou "cd lieu voulu" avant de commencer
+PowerShell ->
+node -v
+npm init //info, puis enter
+dir
+npm install express --save
+
+
+créer un fichier "server.js"
+taper ça dedans
+https://expressjs.com/en/starter/hello-world.html
+
+démarer serveur 
+npm start
+accès web par :
+localhost:3000
+http://localhost:3000/
+
+redémarer serveur 
+ctrl+c (si pop up o)
+node server.js
+
+
+test de robustesse sécurité réseau
+Zap
+
+
+
+usefull link
+https://www.educative.io/answers/how-to-serve-a-static-html-file-in-nodejs

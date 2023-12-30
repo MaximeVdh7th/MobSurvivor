@@ -1,0 +1,19 @@
+MySQL (capitalistes) = MariaDB (open source)
+https://mariadb.com/kb/en/mariadb-server-11-1-2/
+
+base de données  = mathe tulp (ou tull idk)
+
+Root password : 123AQW
+
+fields :
+	-id 	<-- unique
+	-email 	<-- unique
+	-password
+	-salt
+	-create_at
+	-updated_at
+
+GUID = 128 bits
+SHA256 = renvoie 64 caractère
+utf32 = avec emoji
+regex = logique de vérification de text basé sur le type de caractère et de quantité

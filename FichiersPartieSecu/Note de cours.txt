@@ -1,0 +1,6 @@
+
+application lourde = se joue côté utilisateur
+application non-lourde = se joue côté serveur 
+Obfuscation = code illisible
+anti-obfuscation = rend le code lisible
+

@@ -1,0 +1,2 @@
+npm install mysql
+nécessaire pour communiquer entre les trucs et d'autre trucs
