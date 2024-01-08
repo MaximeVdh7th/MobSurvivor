@@ -53,6 +53,7 @@ protected:
 	virtual float GetCriticalHitChance();
 	virtual float GetCriticalHitDamagesMultiplier();
 	virtual float GetExplosionRadius();
+	virtual float GetExplosionDamages();
 	
 
 public:

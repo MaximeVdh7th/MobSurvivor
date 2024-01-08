@@ -4,6 +4,7 @@
 #include "Boss.h"
 
 #include "BossDamageZone.h"
+#include "BossHealthBar.h"
 #include "EnemiesHealthBar.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -31,8 +32,9 @@ ABoss::ABoss()
 	PivotPoint->SetupAttachment(Collision);
 
 	//barre de vie
-	//HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
-	//HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthBar"));
+	HealthWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("HealthBar"));
+	HealthWidgetComp->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
 }
 
 void ABoss::Damage(AActor* Target)
@@ -80,8 +82,8 @@ void ABoss::BeginPlay()
 	Health->OnHealthDie.AddDynamic(this, &ABoss::Die);
 
 
-	//UEnemiesHealthBar* EnemiesHealthBar = Cast<UEnemiesHealthBar>(HealthWidgetComp->GetUserWidgetObject());
-	//EnemiesHealthBar->SetOwnerEnemy(this);	
+	UBossHealthBar* BossHealthBar = Cast<UBossHealthBar>(HealthWidgetComp->GetUserWidgetObject());
+	BossHealthBar->SetOwnerBoss(this);	
 }
 
 

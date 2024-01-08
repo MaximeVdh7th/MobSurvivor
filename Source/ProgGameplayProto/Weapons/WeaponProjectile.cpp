@@ -43,7 +43,7 @@ void AWeaponProjectile::Tick(float DeltaTime)
 	MoveProjectile(DeltaTime);
 }
 
-void AWeaponProjectile::SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier, float NewExplosionRadius)
+void AWeaponProjectile::SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier, float NewExplosionRadius, float NewExplosionDamages)
 {
 	Size = NewSize;
 	Range = NewRange;
@@ -52,6 +52,7 @@ void AWeaponProjectile::SetParameters(float NewSize, float NewRange, float NewSp
 	CriticalHitChance = NewCriticalHitChance;
 	CriticalHitMultiplier = NewCriticalHitMultiplier;
 	ExplosionRadius = NewExplosionRadius;
+	ExplosionDamages = NewExplosionDamages;
 }
 
 void AWeaponProjectile::MoveProjectile(float DeltaTime)

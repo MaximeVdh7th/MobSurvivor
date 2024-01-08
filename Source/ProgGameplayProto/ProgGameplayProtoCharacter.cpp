@@ -110,6 +110,12 @@ void AProgGameplayProtoCharacter::SetupSaveUpgrade()
 
 		Damage_Amount += LoadedGame->UpgradeStrut.BombDamage;
 
+		if (LoadedGame->LocalWeaponused == WeaponUsed::GrenadeLauncher)
+		{
+			DefaultWeaponData = GrenadeLauncherData;
+			WeaponProjectileToSpawn = ExplosiveProjectileToSpawn;
+		}
+
 		DropsCollector->SetRelativeScale3D(FVector::OneVector *  LoadedGame->UpgradeStrut.CollectionDistance * 4 /*4 is the Initial size*/);
 		InvincibilityTime = LoadedGame->UpgradeStrut.InvicibilityTime;
 

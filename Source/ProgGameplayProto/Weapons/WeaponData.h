@@ -83,4 +83,12 @@ public:
 	float ExplosionRadius = 50;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Data|AOE")
 	float ExplosionRadiusMultiplier = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Data|AOE")
+	float ExplosionDamages = 15;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon Data|AOE")
+	float ExplosionDamagesMultiplier = 1;
+
+
 };

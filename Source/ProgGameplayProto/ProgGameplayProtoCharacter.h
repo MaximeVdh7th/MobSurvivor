@@ -70,6 +70,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon)
 	TSubclassOf<AWeaponProjectile> WeaponProjectileToSpawn;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon)
+	TSubclassOf<AWeaponProjectile> ExplosiveProjectileToSpawn;
+
 	virtual bool WantsToShoot();
 	void SetupDefaultWeapon();
 	void SetupSaveUpgrade();
@@ -86,6 +89,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = WeaponData)
 	UWeaponData* DefaultWeaponData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = WeaponData)
+	UWeaponData* GrenadeLauncherData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = WeaponData)
 	TArray<UBonusData*> DefaultBonuses;

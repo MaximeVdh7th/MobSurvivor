@@ -20,12 +20,12 @@ AWeaponExplosiveProjectile::AWeaponExplosiveProjectile()
 
 void AWeaponExplosiveProjectile::GetZoneDamages()
 {
+	
 	RadialForce->FireImpulse();
 	TArray<AActor*> EnemyList;
 	TSubclassOf<AEnemy> enemyClass;
 	//RadialForce->AddObjectTypeToAffect(AEnemy);
 	//TriggerZone->GetOverlappingActors(EnemyList, enemyClass);
-	
 	TArray<TEnumAsByte<EObjectTypeQuery>> ObjectType;
 	ObjectType.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
 	TArray<AActor*> EmptyArray;
@@ -45,10 +45,16 @@ void AWeaponExplosiveProjectile::GetZoneDamages()
 	
 	for (AActor* singleEnemy : EnemyList)
 	{
+		
 		CaughtEnemy =  Cast<AEnemy>(singleEnemy);
-		CaughtEnemy->Health->AddHealth(GetDamages());
+		if (IsValid(CaughtEnemy)) {
+			CaughtEnemy->Health->AddHealth((-1) * 10);
+			//CaughtEnemy->Health->OnHealthChanged;
+		}
 
 	}
+
+	
 	
 }
 
@@ -70,4 +76,12 @@ void AWeaponExplosiveProjectile::HitSomething(AActor* OtherActor, FVector HitLoc
 
 	if (NumberOfHitsBeforeDestroy < 1)
 		DestroyProjectile();
+		
+}
+
+float AWeaponExplosiveProjectile::GetExplosionDamages()
+{
+	const float output = ExplosionDamages * ExplosionDamagesMultiplier;
+
+	return output;
 }

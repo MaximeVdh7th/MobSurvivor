@@ -8,6 +8,7 @@
 
 class UBonusData;
 struct FRangeEnemySpawnRule;
+struct FSpawnBossRule;
 struct FPunctualEnemySpawnRule;
 
 /**

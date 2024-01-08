@@ -50,6 +50,8 @@ protected:
 	
 	bool bCanPierce = false;
 	float ExplosionRadius;
+	float ExplosionDamages;
+	float ExplosionDamagesMultiplier;
 
 	float ElapsedRange;
 
@@ -75,7 +77,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	virtual void SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier, float NewExplosionRadius);
+	virtual void SetParameters(float NewSize, float NewRange, float NewSpeed, float NewBaseDamages, float NewCriticalHitChance, float NewCriticalHitMultiplier, float NewExplosionRadius, float NewExplosionDamages);
 
 	virtual void MoveProjectile(float DeltaTime);
 

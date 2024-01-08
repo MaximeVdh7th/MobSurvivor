@@ -21,4 +21,5 @@ void UEnemiesHealthBar::NativeTick(const FGeometry& MyGeometry, float InDeltaTim
 	CurrentHealthLabel->SetText(FText::AsNumber(OwnerEnemy->Health->GetCurrentHealth(), &Opts ));
 	MaxHealthLabel->SetText(FText::AsNumber(OwnerEnemy->Health->GetMaxHealth(), &Opts));
 
+
 }

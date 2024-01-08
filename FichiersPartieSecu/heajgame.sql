@@ -14,393 +14,98 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
-
--- Data exporting was unselected.
+-- Dumping structure for table heajgame.scores
+CREATE TABLE IF NOT EXISTS `scores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(10) unsigned DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user-id` (`userID`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs;
+
+-- Dumping data for table heajgame.scores: ~10 rows (approximately)
+INSERT INTO `scores` (`id`, `userID`, `score`, `updated_at`, `created_at`) VALUES
+	(12, 44, 0, '2023-12-18 20:56:56', '2023-12-18 20:56:56'),
+	(13, 45, 0, '2023-12-18 21:25:06', '2023-12-18 21:25:06'),
+	(14, 47, 0, '2023-12-18 21:38:09', '2023-12-18 21:38:09'),
+	(15, 48, 16, '2023-12-18 21:41:39', '2023-12-18 21:41:39'),
+	(16, 50, 2, '2023-12-18 21:42:58', '2023-12-18 21:42:58'),
+	(17, 52, 1, '2023-12-18 22:07:57', '2023-12-18 22:07:57'),
+	(18, 53, 2, '2023-12-18 22:10:33', '2023-12-18 22:10:33'),
+	(19, 54, 14, '2023-12-18 22:20:33', '2023-12-18 22:20:33'),
+	(21, 55, 0, '2023-12-23 19:00:57', '2023-12-23 19:00:57'),
+	(22, 56, 4, '2023-12-23 19:01:36', '2023-12-23 19:01:36');
+
+-- Dumping structure for table heajgame.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `salt` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`) USING BTREE,
+  KEY `created_at` (`created_at`),
+  KEY `updated_at` (`updated_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs;
+
+-- Dumping data for table heajgame.users: ~51 rows (approximately)
+INSERT INTO `users` (`id`, `email`, `password`, `salt`, `token`, `created_at`, `updated_at`) VALUES
+	(1, 'Test@dhjsk.fo', 'a40ad4b8bccd599cd712121af03def54482e655b1dc86f0b82b3be615371b0d1', '99b5cbc905f0de34a50220e869f89439a4538c5ce427335781296fd9aff9eadd', 'jfesn', '2023-12-07 09:54:53', '2023-12-07 09:54:53'),
+	(7, 'max@vdh', '85623dc91d9543e07eb29963ec63c94cdcb3e8ca023996a1a19720c892f69380', '785c2d3cd7033243c9067e9fa423e0116a9fe6e067bd90882aeb85fcc6fa9057', 'jfesn', '2023-12-11 18:15:29', '2023-12-11 18:15:29'),
+	(8, 'random@user', 'e36aa8a78981599e4a452e8101c34394d92193e05641a4ead6e4b221262b52a9', 'cf390bb87a7dc1a952ed6fcd2caa1315b1add28ec0fe01631e0c3d150d3f29d1', 'jfesn', '2023-12-11 18:18:16', '2023-12-11 18:18:16'),
+	(9, 'knkda', 'cf7d388577d06271416e94695e39313a3fc81ad609aed0ea9f46069c2fc544f9', '1b7379a314aeee450b9f8ac2cf34f3979c90c07c776d76ef6f3155d036a50550', 'jfesn', '2023-12-12 09:39:08', '2023-12-12 09:39:08'),
+	(10, 'olpdak', 'b6ff2b48249f7e147213f6804e7927a05435babbc750e5ac0526c88e8324afb9', '8a8980e0baef8b0ad44535f162e9535ac67fe4608305550da1c67c13d011eea1', 'jfesn', '2023-12-12 11:15:27', '2023-12-12 11:15:27'),
+	(11, 'gsg', '0b6b98ae913659bd2a945cce162a839ef3206831b2ef82ca284b5199d235c7c1', '928d519a205396c72f16e88fed40c8c9fd606951f41785ef3dde09ffbb2960a5', 'jfesn', '2023-12-12 11:19:35', '2023-12-12 11:19:35'),
+	(12, 'afzaf', '81e92285bd6920f3e960aeaf37376341b57bc52c0df346298bf67679ca470a7a', 'a194d01095c0e4d5f76ab0630cf54c484fd7b1a2d16051cbdc91816f0cb79797', 'jfesn', '2023-12-12 11:21:58', '2023-12-12 11:21:58'),
+	(13, 'ùffjo', '171c9b1c53b0d7fae12caa6663dcaef1f76e65c03575a511e6e3ccb65a45d8c2', 'a05b7d0283b3953d1033a0e5bad757cb78baf244c0cb3dc7d8582b67fcdac454', 'jfesn', '2023-12-14 10:32:33', '2023-12-14 10:32:33'),
+	(14, 'max', 'c3280bb7f67783d3f1da4b06c84fe5dbddb17378eab59fb83348de920d88dddd', '60b77b0c9a3d2b8108c8264829d4e493e915ae180dda0bd0efdfaae6da1c1984', 'jfesn', '2023-12-14 11:01:27', '2023-12-14 11:01:27'),
+	(15, 'mùmpkds', '82ae3b3212eabc1ba91f637d857a48c84cb4556b61ce5f6a1e8e1cc67ea9a6f3', '3d996c482230ca834aeffd6ad0b1491b013f949468d8a3b3807a39aca270ced3', NULL, '2023-12-14 12:36:29', '2023-12-14 12:36:29'),
+	(16, 'fhdhdh', '99543268e34a1ccabf7b39b3daf34d1a21d5f0e3a90ba7d07f25c165a5532dcd', '8d0b425de1ef2ad2672cbf7d3b1026ac9128989a574015c676bd0ccf520e20bb', 'BFQGbAJ8mhHy49qswCDgl0iKUfzPXtrE', '2023-12-14 12:41:55', '2023-12-14 12:41:55'),
+	(17, 'ppkf', '5d0e9bb110f867622fc3f38b10b7d1c6467b96645d51a421ec2d8acb899d79e4', '89dbb43eadf890b15123538f3f4bca9da777ece31e5c65b7d273fe7772e473f6', 'fnedO8PTFSjt3qhLV7kpcRCozsB6HIYJ', '2023-12-17 13:06:19', '2023-12-17 13:06:19'),
+	(18, 'pdpkd', 'a5d407dc6690d59692fd802b4a97d0259151b79dfc441cf9fe965aecabae4a22', 'e57ba70d9f79dc7c8c234155ab3e28ad8b9f953504649dd4be70d2612b6e3df9', '6vTNbk8fJrWGquRYnla412I3M7AKVgSQ', '2023-12-17 14:25:46', '2023-12-17 14:25:46'),
+	(19, 'pojfo', '982340c0654540a14c4e400240b9339db3f5fa8227aae5f29f73f89cb3927090', '9c5a8a3e1c76aafe81c59dc68fd921c2487aefea8eafd8dada1afb34bf67e55b', 'Rd8m24joeVaFDBWUv5nitOPsAuNJx1rQ', '2023-12-17 14:30:34', '2023-12-17 14:30:34'),
+	(20, 'oofz', 'a793e1762be12bfcab1ab311b076e0644b7a423ecd7c0fd503aa7956b468d29a', '603d3335005c98459c478296f4cc1ba7acd23788b15f4f0e8ed41bd61a0dbaa8', 'VwbONgisWrdm8Dk06IYC4AML1ctnz3Z5', '2023-12-18 16:39:27', '2023-12-18 16:39:27'),
+	(21, 'pamsdn', 'ac1ff52b4127ffec2c0cebf9460fd3432ec2ef0129d4b529516537b75e6cacbb', '122a1263694038d2e50d6a4a8f1e72bbbf5fcdf33927aba72c60ee31546b041f', 'WDTpE5FnaC30qNZ1yog8ALRU7rKHxhOV', '2023-12-18 16:52:18', '2023-12-18 16:52:18'),
+	(22, 'panwjfj', 'faceeb30a4f1854c47f482be21aabfc44788aad59d0e3fd2ba45bd5646ed5a6c', '0a2b42588e50c54111d9b94b282ca2a058266068a2fe4956941e1dbe8c967c4d', 'a9klW2wfmKTNoJYx1UXq0DuMQdV7Lc8s', '2023-12-18 17:48:36', '2023-12-18 17:48:36'),
+	(23, 'OKADZDA', 'a6809059021cbfb6c0855f83cde8e9b40a192b613ba222f3348d2aa95011f0af', 'ae0668a5995ab550949c12760f2c6fdd2881801c6cb2f9e85131f290b1e12220', 'GrxULHNq9IPtnfQphbDgW3wmE2yC4R0j', '2023-12-18 17:50:40', '2023-12-18 17:50:40'),
+	(24, 'PPAZKP', 'c983de21ba016f641a996380b556e4bd28d4a0ae3cc8fde8f9357938e7b6087a', 'e420f50ffbbee84403af93d99dac7b1907795719cbf5596e61ecc5281c090ab5', 'E5jGpJwlke1yiWsXOC63zMYHKvU0L24F', '2023-12-18 17:52:54', '2023-12-18 17:52:54'),
+	(25, 'KD?LADZN', 'ed543239fd95f620a5997a4a8d11374144a6b4af44c0f9bb29185d29fa8b7b14', 'f933d20aec1be25752a06ed9c96f6d1dc5ec434f689c3d15ffb9f3fbfddc876e', 'OfUVcGY1TD9gupZLdl85yNWXashxEjnQ', '2023-12-18 17:54:44', '2023-12-18 17:54:44'),
+	(26, 'NOZUHDAZ', '0845eab5ed7d6beb7a793ce37c61ec921bdad3c549bc22c194afe95a6b6f0607', '23469a550d1034582361848637a66b60b107085a544a778c7a148e8555878eac', 'PQtdXv3aq6NKHMRBT47Zy2u1bImfWDco', '2023-12-18 17:56:40', '2023-12-18 17:56:40'),
+	(27, 'NZIDJOFAZ', 'db460514f0793b9a737250a8166b12faebe5e29fd343e4285042bde35affc95e', '2a16b19638a601db2c5cf633aca8efe83b725366e8a686c1675b5bde824624d9', 'uzEVq67h9tOcPykaMW8ojJ5wgDTiS3nK', '2023-12-18 17:59:43', '2023-12-18 17:59:43'),
+	(28, 'ODJOA', 'be6cd1d178d582db24def64915886bac943ec63b2837f3ba69a4e37ccd1a6783', '8d05a3d0042a8163f0f962eefa39649bae58db653e370e38355c8366b5680297', 'pDxEXOvaQnh7fWk40jqYAHuBzJrN9Lic', '2023-12-18 18:02:27', '2023-12-18 18:02:27'),
+	(29, 'PZSDJZND', '3ae395591d23e31be2e57ee2caa3c89711f438e752148ba8dbf2cf0f4251b5fc', '984248202d657caa3efcc4c233313e2b0466ef565f8ec6e4392c08ea332d3373', 'nOqgwHkLKmtaD7Es5r2iJIFBzdG13ylM', '2023-12-18 18:05:51', '2023-12-18 18:05:51'),
+	(30, 'ofejoa', '9047ec1b9fc261fed48601d8894ce5c1b6ba8cec5a0313037b4f3160de1819f4', 'f899d357109dacd7aefc3ee24fa50374d0d0d9baff00ec5b83d5e83ce3a5ef5b', 'T5SPIGdVvQmebg9iKORkqs04YECpwyD1', '2023-12-18 18:17:31', '2023-12-18 18:17:31'),
+	(31, 'zdjofzfz', '458317361be275f46707a61bfa8d782e9009405fd32d2d5c53846b13adb8b043', '25a13f0f6e0eb8741c4ca72974ea4e2393ef8c19d48ed56ccbc33148212a9d64', 'hmvMuQBH5ia4RP12lqk3IgNJoWxDwLSU', '2023-12-18 18:20:08', '2023-12-18 18:20:08'),
+	(32, 'jdioiahfz', '09dfec5f6bc15bac50e4db8d36e1090713e667a6e0838bfad9bdc0de7c9c47e5', '38e200698285126ae236451f0a877be16d7de1c5d599e6613c2255bb64c5b513', 'ObkWtDV9YTvpqQ0acURsJ4LH6i5GM8zS', '2023-12-18 18:23:07', '2023-12-18 18:23:07'),
+	(33, 'plpfoef', 'aadfdf97b26b161c5aa1b2cea6c64b0db645e300a95eb801e6e14169fc4fb6ba', '8ffbe1715625cf057358e095b54aa3ae598fdb864d99db032817a88a83699afd', 'Fg2yhWO7UpsTc9dvBkECJaQruVoiPMZ8', '2023-12-18 18:25:49', '2023-12-18 18:25:49'),
+	(34, 'djoqfioiqf', '822793760b3b5d78c729bae214c3fb9e1a8cc4f6ca466a216003954d0a0fa0c9', '1ac21565d205a4a22c9d37624f9c9e041011ada24a955fe7159baf746dd3172e', 'TZdHWAOjvYeJ2flVhIXP9LR0CQyNgbzm', '2023-12-18 18:27:24', '2023-12-18 18:27:24'),
+	(35, 'bteafazaz', '1412decc466633ccb684383ae647585c987d90321206d73a24a03a16d12a6820', '4ad1fb350c3b095ba75d3483e3de64fad69413bafd65af421cf386c978934424', 'P5sxyDK1wEl7MWdH4JY6URkX2og38ZQv', '2023-12-18 18:42:52', '2023-12-18 18:42:52'),
+	(36, 'nuhdodza', '0566cd25ad4aaf2a28cefd3ba34bfb9911235fbfbffdbaa803c5ba8247851346', '944358e0e101e98bd10a1d52bd20747dda45b2b15c2afb3c09f8757993cbd179', 'Ez26GXrhjc4RQsugLJkMl9fe1VxK5mnI', '2023-12-18 18:48:34', '2023-12-18 18:48:34'),
+	(37, 'kushuèfgaf', 'dd37d0283bcc75557f78ce511b271877d8d360ad36e5c3656d2e90a8d1510e2a', '573773c5fe5527f3dd83f1ecbae4dcae29c5e2b8d62290105a8c784f384dfdd3', '0aglSbTPjdmkiELzoW1v9U37qrGh5fxM', '2023-12-18 19:30:37', '2023-12-18 19:30:37'),
+	(38, 'cnqjsncjsq', 'ad95f1d1ec2c506be6692702355e2e9084b653b613e0be7db0c611c727f004a6', 'e1e85964565b952991fc63044d42c0ce5a04bd630095c981345f7a272fb881bc', '73mDLXWgOj846uGkpK2qtChzcvMsa1lU', '2023-12-18 19:35:20', '2023-12-18 19:35:20'),
+	(39, 'zdpoof', 'd0c7fa175984c72b7d56bad3db6a857186728135affa4f4bb7e6f338f1d182f0', 'ba876ddd5c7e51f79bd4a0831b35229996339b79fd7bacdcb26d664594d270ac', '0iudIXprEnhLk3As1Z2JGFoDf6H8ycPO', '2023-12-18 20:22:48', '2023-12-18 20:22:48'),
+	(40, 'ijzaap', 'e3c155341264efc70e5c97df4dcbe55c1ca8bc236d3915e0ed06e4268a016f4b', '321a3b0effa376e62f3f80862e74a6c31a1ca3401ec470622b00907acad4e122', 'Yb6WzpPgX01BuAdKToi3CLZsUt48NSIf', '2023-12-18 20:26:08', '2023-12-18 20:26:08'),
+	(41, 'uhiuaziuhhra', '3e05254ee700e79d42f7a613c770ab5a0bd66614f99a954afec1237555710008', '81004d2d2339f56850495b5d0fa26f433519840c8e03cf3e5adad87300fe45db', 'lM8xYBTU1PkiohacLS7rDgjdK6NEOQne', '2023-12-18 20:30:18', '2023-12-18 20:30:18'),
+	(42, 'gufgfzo', 'f5b263504cf95e85cb6fb762e1bad41f276a1f7dd658c09f5a7a98f1fa1db7c3', '0fee1641b3cc67f84030c4b5004c3f159fa88a1ee135f86a78ee3d8bb0641079', 'WqrHRxEgB42YzmQFVXZ1iCtIuw39OdpT', '2023-12-18 20:33:11', '2023-12-18 20:33:11'),
+	(43, 'vuidhzfia', 'b327b974b46f59fd6f9924c6aec7593cbbe3909907958ab169b4464df9f56114', 'a6650fd138cead2d269402841d0262338a02b4b39e8b339e472de10c8089dc0d', 'Dqsu8cYCPiWz4nS9fMbxpgNeTvaIXmVw', '2023-12-18 20:35:41', '2023-12-18 20:35:41'),
+	(44, 'ijfiejzi', '51b4e59047c03019fcd42966ff9fd030fffd9f4b8470bfda9422ae7f248f1926', '94d635744fb46e424baaf0aa79532695e10771d3c99453d6df7909304dbb2540', 'KwjH5FRmauxZ6esEAqCUNIpDkS3ylrhi', '2023-12-18 20:56:47', '2023-12-18 20:56:47'),
+	(45, 'fjzjpjf', '03b3201fdcc2a4d2c67d3d6f8867e5d9cb2914bc7fdf8825706e350d5451296c', '5d333026df54ecea001b9e1285b1e68e068353b4fe5e3c75b8f37f5fa550c077', 'Y4HCu3XVOp5h8EFDLWJfNz2a9dTAlx1e', '2023-12-18 21:24:55', '2023-12-18 21:24:55'),
+	(46, 'rasjoxubiaaz', '09877ffed34c01d63a327ee1ce3778f7cc627ffdcf3dd11f3080cf6c329d2cf4', '6fdc678a35cfe76894df60269f7a1492bbf5be71e83ca653001609bd3bfccc4b', 'o42Qc7ed3RhZN8KLUCJqFsgOSaBpmtVf', '2023-12-18 21:30:20', '2023-12-18 21:30:20'),
+	(47, 'kjfoijoj', 'd3961d9358d8ff747db32d55c621849cd1f5193268ec64914e75eb54952aa5b0', '3520d1c18befd855fdce90054a99f63b109255fa9da89ebfb55b3901e67ec5ac', 'nIB4po7GrAE6VbTk8X53dCc0HQKSsjuN', '2023-12-18 21:37:49', '2023-12-18 21:37:49'),
+	(48, 'opfj^zofjfzi', '6f4ae4d092c24261263aa88557df07eaafddc2980c835453d35671bf6b4c0ffc', '1baf83d0af7519cf84182d3cd73b6c22343d03a4dbc7eda66ce3ad1b506bbca6', '7cVgxAaI1hZqK3wd9sDl8YeLn5u4rjOQ', '2023-12-18 21:41:31', '2023-12-18 21:41:31'),
+	(49, 'pfjpjgzgz', '8569150f750a735565ea67bfbe9d3c7dab94118d618f1ee2a0e97a3a12d014f5', 'a0633be6fb206c0e96807e4bddb6ae76448cda1730a2d74ec7df21daded18a12', 'LW8ckMBtV4U3SwzgybqdsGKEY7e2iu5X', '2023-12-18 21:41:56', '2023-12-18 21:41:56'),
+	(50, 'kjfpojfze', 'ae5fa4c5a900d574bb7e64966c1a85265391e5407e19b748097816a52f872e13', '0e3e2990619789288c9c8ed7716c88b787f79d2ba3a92303a0a74fe78c1dae07', 'XhecHWkMaYVqtiwKZRl4LvyrnOAuUBo7', '2023-12-18 21:42:44', '2023-12-18 21:42:44'),
+	(51, 'kjfifahàahgàagh', 'aedccb4b18989740ea82ae65811f1e2e4267dd59e4386319b906ed3c7fdd175a', '0ae71d9489d55285ee43353bdc54cc80992a8a5f46c3273e4fdf9df62e116117', 'Z7uitoOXp4KrbnTANdcha3fsMj8CBQGS', '2023-12-18 22:04:19', '2023-12-18 22:04:19'),
+	(52, 'ifhijfapzfo', 'a6718d737d27c1b8a912734546346a6c6b122a2307b6ce3808846d95fff3fb5c', '55a373c2c53b65d8cbd024b3625c09d5006d52f9577e7b97de1816aa6b687dc7', 'QEOXzGy1U2gdiuMvpJAPtLqCH93W5To4', '2023-12-18 22:07:39', '2023-12-18 22:07:39'),
+	(53, 'lflapfa', '9f6054b8679d1ac0bf0ccb6a019995732bc77686f10b9bf05cbc6a18721fbc5b', 'e4e8e86d74369fc2db84af4bf064bbd707c727ae216b8e5145e2ea1d5fb8c8aa', 'agjE1JZ3qL8VhQNcp4tKobTulYIOy7XM', '2023-12-18 22:10:14', '2023-12-18 22:10:14'),
+	(54, 'kfjpaojfazfaz', '5a1de6b70be105f266b4f54feb9881145ea7a58f0c3287213d8c62050d6859e4', '8bf11c4c27422dd6e7a789673360336951056cce975eec3bd38e278d9eefe7a0', 'B9YVRawSNM1A06CebjhXGWUK8zr3iOIJ', '2023-12-18 22:19:56', '2023-12-18 22:19:56'),
+	(55, 'ofojfzf', 'afc93123074619800f759a2a1fd880dfc908afc506cb0d6212b118a40f9cb0fe', '67227d501a4e93415d2069d6482ee423bdd60d2bf781195c8c23ab2bc6e8437a', 'FD7eHVwiUv6ClyKkNZ8uYGQEpqJ0PtxA', '2023-12-23 19:00:44', '2023-12-23 19:00:44'),
+	(56, 'ofjaizfja', '6a05efd19975b80b57a662bccfafd2370a299a62e4929d8bb9a45b8a1aef19a3', '74514a2be0dd51eeb6729023e4277dedef1f1d371ddbefaf7f29ad429724e186', 'RwDGs6gYTIFLd1Hbzi47KuCP2Bcjph9a', '2023-12-23 19:01:28', '2023-12-23 19:01:28');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

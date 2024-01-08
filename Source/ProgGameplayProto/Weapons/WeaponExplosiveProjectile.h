@@ -16,5 +16,6 @@ class PROGGAMEPLAYPROTO_API AWeaponExplosiveProjectile : public AWeaponProjectil
 public:
 	AWeaponExplosiveProjectile();
 	FORCEINLINE void GetZoneDamages();
+	FORCEINLINE float GetExplosionDamages();
 	void HitSomething(AActor* OtherActor, FVector HitLocation, FVector OriginLocation) override;
 };

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Enemy.h"
 //#include "../../../../../../../../Program Files/Epic Games/UE_5.3/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h"   WHY??
+#include "Boss.h"
 #include "Blueprint/UserWidget.h"
 #include "EnemiesHealthBar.generated.h"
 
@@ -16,11 +17,14 @@ public:
 
 	void SetOwnerEnemy(AEnemy* InEnemy) { OwnerEnemy = InEnemy; }
 
+	
+	
+
 protected:
 
 	TWeakObjectPtr<AEnemy> OwnerEnemy;
 
-
+	
 
 	UPROPERTY(meta = (BindWidget))
 	class UProgressBar* HealthBar;

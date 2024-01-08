@@ -97,7 +97,7 @@ void UWeaponComponent::SpawnProjectile(FVector Direction)
 	}
 	
 
-	projectile->SetParameters(GetProjectileSize(), GetProjectileRange(), GetProjectileSpeed(), GetDamages(), GetCriticalHitChance(), GetCriticalHitDamagesMultiplier(), GetExplosionRadius());
+	projectile->SetParameters(GetProjectileSize(), GetProjectileRange(), GetProjectileSpeed(), GetDamages(), GetCriticalHitChance(), GetCriticalHitDamagesMultiplier(), GetExplosionRadius(), GetExplosionDamages());
 
 	if (Direction == FVector::ZeroVector)
 		Direction = Character->GetActorForwardVector();
@@ -284,6 +284,16 @@ float UWeaponComponent::GetExplosionRadius()
 	}
 	else return 0;
 	
+}
+
+float UWeaponComponent::GetExplosionDamages()
+{
+	if (!IsValid(WeaponData)) return 0.0f;
+
+	float output = (WeaponData->ExplosionDamages) * (WeaponData->ExplosionDamagesMultiplier + BonusDamagesMultiplier);
+	output = FMath::Max(0.1f, output);
+
+	return output;
 }
 
 

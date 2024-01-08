@@ -11,6 +11,12 @@
 #include "MySaveGame.generated.h"
 
 
+UENUM(BlueprintType)
+enum class WeaponUsed : uint8
+{
+	peashooter = 0 UMETA(DisplayName = "Peashooter"),
+	GrenadeLauncher = 1 UMETA(DisplayName = "Grenade-Launcher")
+};
 /**
  * 
  */
@@ -29,6 +35,13 @@ class PROGGAMEPLAYPROTO_API UMySaveGame : public USaveGame
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int NumberOfEnemiesKilled;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	bool IsGrenadeLauncherUnlocked;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	WeaponUsed LocalWeaponused;
 
 	UFUNCTION(BlueprintCallable)
 	//void CombineStruct(TArray<FUpgradeValueStruct>& Bonuses, TArray<int>& LevelByUpgrade);

@@ -54,8 +54,8 @@ protected:
 	void MoveTowardPlayer(float& DeltaTime, FVector& direction);
 
 
-	//UPROPERTY(VisibleAnywhere)
-	//	class UWidgetComponent* HealthWidgetComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class UWidgetComponent* HealthWidgetComp;
 
 #pragma region Dash
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
