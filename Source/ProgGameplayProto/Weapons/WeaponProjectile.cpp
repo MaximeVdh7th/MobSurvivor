@@ -139,5 +139,14 @@ float AWeaponProjectile::GetDamages()
 	return output;
 }
 
+float AWeaponProjectile::GetExplosionDamages()
+{
+
+
+	const float output = ExplosionDamages * ExplosionDamagesMultiplier;
+
+	return output;
+}
+
 
 

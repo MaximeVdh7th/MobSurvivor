@@ -8,6 +8,7 @@
 #include "ProgGameplayProto/Health.h"
 #include "ProgGameplayProto/ProjectileInteraction.h"
 #include "ProgGameplayProto/Enemies/Enemy.h"
+#include "WeaponData.h"
 
 AWeaponExplosiveProjectile::AWeaponExplosiveProjectile()
 {
@@ -20,6 +21,8 @@ AWeaponExplosiveProjectile::AWeaponExplosiveProjectile()
 
 void AWeaponExplosiveProjectile::GetZoneDamages()
 {
+
+
 	
 	RadialForce->FireImpulse();
 	TArray<AActor*> EnemyList;
@@ -48,7 +51,7 @@ void AWeaponExplosiveProjectile::GetZoneDamages()
 		
 		CaughtEnemy =  Cast<AEnemy>(singleEnemy);
 		if (IsValid(CaughtEnemy)) {
-			CaughtEnemy->Health->AddHealth((-1) * 10);
+			CaughtEnemy->Health->AddHealth((-1) * ExplosionDamages);
 			//CaughtEnemy->Health->OnHealthChanged;
 		}
 
@@ -79,9 +82,3 @@ void AWeaponExplosiveProjectile::HitSomething(AActor* OtherActor, FVector HitLoc
 		
 }
 
-float AWeaponExplosiveProjectile::GetExplosionDamages()
-{
-	const float output = ExplosionDamages * ExplosionDamagesMultiplier;
-
-	return output;
-}

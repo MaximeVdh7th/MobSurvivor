@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "ProgGameplayProto/Weapons/WeaponProjectile.h"
+#include "WeaponData.h"
 #include "WeaponExplosiveProjectile.generated.h"
+
 
 
 
@@ -15,7 +17,10 @@ class PROGGAMEPLAYPROTO_API AWeaponExplosiveProjectile : public AWeaponProjectil
 
 public:
 	AWeaponExplosiveProjectile();
+
+
+	//UWeaponData MyWeaponData;
 	FORCEINLINE void GetZoneDamages();
-	FORCEINLINE float GetExplosionDamages();
+
 	void HitSomething(AActor* OtherActor, FVector HitLocation, FVector OriginLocation) override;
 };

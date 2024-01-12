@@ -91,6 +91,8 @@ public:
 
 	virtual float GetDamages();
 
+	virtual float GetExplosionDamages();
+
 	
 
 public:
