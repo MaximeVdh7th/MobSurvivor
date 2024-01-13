@@ -9,6 +9,8 @@ use database interface like HeidiSQL : https://www.heidisql.com/download.php
 
 Import the database from the file heajgame.sql in the "FichiersPartieSecu" folder and name the session heajgame
 
+the username is root and password is 123AQW
+
 download Node.js
 
 open Node.js command prompt
