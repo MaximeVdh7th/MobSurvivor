@@ -61,7 +61,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE float GetMaxHealth() { return MaxHealth; }
 	UFUNCTION(BlueprintCallable)
-	FORCEINLINE void SetMaxHealth(float DefaultMax_Health, float time);
+	void SetMaxHealth(float DefaultMax_Health, float time);
 
 	float GetDamage(AWeaponProjectile* DamageProjectile);
 
