@@ -108,7 +108,44 @@ void AProgGameplayProtoCharacter::SetupSaveUpgrade()
 		Health->CurrentHealth	+= LoadedGame->UpgradeStrut.HPMax;
 		Health->MaxHealth		+=  LoadedGame->UpgradeStrut.HPMax;
 
-		Damage_Amount += LoadedGame->UpgradeStrut.BombDamage;
+		if (LoadedGame->UpgradeStrut.BombDamage == 0)
+		{
+			Damage_Amount = -(15.0f);
+		}
+		else
+			Damage_Amount = LoadedGame->UpgradeStrut.BombDamage;
+		
+
+		if (LoadedGame->UpgradeStrut.BombCooldown == 0)
+		{
+			Bomb_Cooldown = 20;
+		}
+		else
+			Bomb_Cooldown = LoadedGame->UpgradeStrut.BombCooldown;
+
+		if (LoadedGame->UpgradeStrut.BombRadiusDamage == 0)
+		{
+			BombRadius = 200;
+		}
+		else
+			BombRadius = LoadedGame->UpgradeStrut.BombRadiusDamage;
+
+		if (LoadedGame->UpgradeStrut.DashCooldown == 0)
+		{
+			Dash_Cooldown = 10;
+		}
+		else
+			Dash_Cooldown = LoadedGame->UpgradeStrut.DashCooldown;
+
+		if (LoadedGame->UpgradeStrut.DashDistance == 0)
+		{
+			Dash_Distance = 2000.0f;
+		}
+		else
+			Dash_Distance = LoadedGame->UpgradeStrut.DashDistance;
+		
+
+		
 
 		if (LoadedGame->LocalWeaponused == WeaponUsed::GrenadeLauncher)
 		{

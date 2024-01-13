@@ -67,6 +67,22 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	float Damage_Amount;
 
+	UPROPERTY(BlueprintReadOnly)
+	float BombRadius;
+
+	UPROPERTY(BlueprintReadOnly)
+	float Bomb_Cooldown;
+
+	UPROPERTY(BlueprintReadOnly)
+	float Dash_Cooldown;
+
+	UPROPERTY(BlueprintReadOnly)
+	float Dash_Distance;
+
+
+
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon)
 	TSubclassOf<AWeaponProjectile> WeaponProjectileToSpawn;
 
@@ -102,7 +118,10 @@ protected:
 	bool bIsHoldingShoot = false;
 	bool bIsAutoFire = false;
 
+
 	float InvincibilityTime = 0;
+
+
 
 protected:
 
