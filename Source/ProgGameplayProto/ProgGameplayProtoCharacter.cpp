@@ -118,21 +118,21 @@ void AProgGameplayProtoCharacter::SetupSaveUpgrade()
 
 		if (LoadedGame->UpgradeStrut.BombCooldown == 0)
 		{
-			Bomb_Cooldown = 20;
+			Bomb_Cooldown = 20.0f;
 		}
 		else
 			Bomb_Cooldown = LoadedGame->UpgradeStrut.BombCooldown;
 
 		if (LoadedGame->UpgradeStrut.BombRadiusDamage == 0)
 		{
-			BombRadius = 200;
+			BombRadius = 200.0f;
 		}
 		else
 			BombRadius = LoadedGame->UpgradeStrut.BombRadiusDamage;
 
 		if (LoadedGame->UpgradeStrut.DashCooldown == 0)
 		{
-			Dash_Cooldown = 10;
+			Dash_Cooldown = 10.0f;
 		}
 		else
 			Dash_Cooldown = LoadedGame->UpgradeStrut.DashCooldown;
